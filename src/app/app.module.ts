@@ -11,6 +11,8 @@ import { ListComponent } from './components/list/list.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { AboutComponent } from './Components/about/about.component';
 import { ContactComponent } from './Components/contact/contact.component';
+import { HomeComponent } from './Components/home/home.component';
+import { LoginComponent } from './Components/login/login.component';
 
 
 @NgModule({
@@ -21,7 +23,9 @@ import { ContactComponent } from './Components/contact/contact.component';
     FooterComponent,
     ListComponent,
     AboutComponent,
-    ContactComponent
+    ContactComponent,
+    HomeComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

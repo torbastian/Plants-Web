@@ -12,6 +12,6 @@ export class NavBarComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  active: boolean = true;
+  active: boolean = false;
 
 }

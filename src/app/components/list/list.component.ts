@@ -1,10 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgModule, HostBinding } from '@angular/core';
 import { ClimateObj } from '../../models/climate-model';
 import { ClimateService } from '../../services/climate.service';
 import { PlantObj } from '../../models/plant-model'
 import { PlantService } from '../../services/plant.service';
 import { CrudService } from 'src/app/services/crud-service.service';
-
 
 @Component({
   selector: 'app-list',
@@ -12,7 +11,7 @@ import { CrudService } from 'src/app/services/crud-service.service';
   styleUrls: ['./list.component.css']
 })
 export class ListComponent implements OnInit {
-
+  
   constructor(
     private ClimateService: ClimateService, 
     private PlantService: PlantService

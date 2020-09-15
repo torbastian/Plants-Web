@@ -4,12 +4,14 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ClimateComponent } from './climate/climate.component';
+import { ClimateComponent } from './components/climate/climate.component';
+import { ListComponent } from './components/list/list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ClimateComponent
+    ClimateComponent,
+    ListComponent
   ],
   imports: [
     BrowserModule,

@@ -1,9 +1,37 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+    --main-bg-color:#DAE6C7;
+    --accent-color-1:#889B6A;
+    --accent-color-2:#718453;
+    --accent-color-3:#343b27;
+    --accent-color-1-alternate: #9EAD85;
+    --main-text-color: #161C0D;
+    --shadow: #b2bda1;
+}
+
 * {
     margin:0;
     padding: 0;
 }
 
+body {
+    font-family: sans-serif;
+    color: var(--main-text-color);
+}
+
+html {
+    background: var(--main-bg-color);
+}
+
 #content {
     min-height: 100vh;
+    padding: 10px;
+}
+
+input:focus {
+    outline: none;
+}
+
+button:focus {
+    outline: none;
 }

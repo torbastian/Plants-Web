@@ -1,27 +1,16 @@
-
-<div id="header">
-    <a href="">
-    <img src="../../assets/Home.png" id="logo" >
-    </a>
-    <nav id="navbox">
-
-        <a id="boxforexplore" class="headerboxes" href="">
-            Explore
-        </a>
-        <a id="boxfortypes" class="headerboxes" href="">
-            Types
-        </a>
-        <form id="boxforsearch" class="headerboxes" href="">
-            <input type="text" class="searchbar" placeholder="Search..">
-        </form>
-        <a id="boxforlogin" class="headerboxes" href=""> 
-            Login
-        </a>
-    </nav>
-</div>
-
-
-
-<h1></h1>
-
-
+<header>
+  <img href="" src="../../assets/Home.png" id="logo" />
+  <nav>
+    <button (click)="active = !active">=</button>
+  </nav>
+  <div id="expandable" [ngClass]="{
+      'active' : !active
+    }">
+    <a class="headerboxes" href="">Explore</a>
+    <a class="headerboxes" href="">Types</a>
+    <form class="headerboxes" href="">
+      <input type="text" class="searchbar" placeholder="Search.." />
+    </form>
+    <a class="headerboxes" href="">Login</a>
+  </div>
+</header>

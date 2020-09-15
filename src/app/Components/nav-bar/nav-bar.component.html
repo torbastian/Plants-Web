@@ -1,16 +1,16 @@
 <header>
-  <img [routerLink]="[ 'Home' ]" src="../../assets/Home.png" id="logo" />
+  <img (click)="active = false" [routerLink]="[ 'Home' ]" src="../../assets/Home.png" id="logo" />
   <nav>
     <button (click)="active = !active">=</button>
   </nav>
   <div id="expandable" [ngClass]="{
-      'active' : !active
+      'active' : active
     }">
-    <a class="headerboxes" href="">Explore</a>
-    <a class="headerboxes" [routerLink]="[ 'Types' ]" routerLinkActive="active">Types</a>
-    <form class="headerboxes" href="">
+    <a class="headerboxes" (click)="active = false" href="">Explore</a>
+    <a class="headerboxes" (click)="active = false" [routerLink]="[ 'Types' ]" routerLinkActive="active">Types</a>
+    <form class="headerboxes" (click)="active = false" href="">
       <input type="text" class="searchbar" placeholder="Search.." />
     </form>
-    <a class="headerboxes" [routerLink]="[ 'Login' ]" routerLinkActive="active">Login</a>
+    <a class="headerboxes" (click)="active = false" [routerLink]="[ 'Login' ]" routerLinkActive="active">Login</a>
   </div>
 </header>

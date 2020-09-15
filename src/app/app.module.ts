@@ -5,11 +5,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ClimateComponent } from './climate/climate.component';
+import { FooterComponent } from './Components/components/footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ClimateComponent
+    ClimateComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

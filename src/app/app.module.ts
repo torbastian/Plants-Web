@@ -4,23 +4,16 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-<<<<<<< HEAD
-import { ClimateComponent } from './climate/climate.component';
-import { FooterComponent } from './Components/components/footer/footer.component';
-=======
 import { ClimateComponent } from './components/climate/climate.component';
 import { ListComponent } from './components/list/list.component';
->>>>>>> c89ddd76ba3994da6b3575c96c5d1577b73515ba
+import {FooterComponent} from './components/components/footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ClimateComponent,
-<<<<<<< HEAD
-    FooterComponent
-=======
+    FooterComponent,
     ListComponent
->>>>>>> c89ddd76ba3994da6b3575c96c5d1577b73515ba
   ],
   imports: [
     BrowserModule,

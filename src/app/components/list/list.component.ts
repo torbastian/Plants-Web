@@ -51,6 +51,6 @@ export class ListComponent implements OnInit {
       () => console.log("got plants")
     );
   }
-
+  
   reverseOrder() {}
 }

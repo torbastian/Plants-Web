@@ -1,5 +1,5 @@
 <header>
-  <img href="" src="../../assets/Home.png" id="logo" />
+  <img [routerLink]="[ 'Home' ]" routerLinkActive="active" src="../../assets/Home.png" id="logo" />
   <nav>
     <button (click)="active = !active">=</button>
   </nav>
@@ -11,6 +11,6 @@
     <form class="headerboxes" href="">
       <input type="text" class="searchbar" placeholder="Search.." />
     </form>
-    <a class="headerboxes" href="">Login</a>
+    <a class="headerboxes" [routerLink]="[ 'Login' ]" routerLinkActive="active">Login</a>
   </div>
 </header>

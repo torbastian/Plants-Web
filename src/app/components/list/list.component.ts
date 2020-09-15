@@ -4,6 +4,8 @@ import { ClimateService } from '../../services/climate.service';
 import { PlantObj } from '../../models/plant-model'
 import { PlantService } from '../../services/plant.service';
 import { CrudService } from 'src/app/services/crud-service.service';
+import { PlantTypesService } from 'src/app/services/plant-types.service';
+import { PlantTypeObj } from 'src/app/models/plant-type-model';
 
 @Component({
   selector: 'app-list',
@@ -13,16 +15,22 @@ import { CrudService } from 'src/app/services/crud-service.service';
 export class ListComponent implements OnInit {
   
   constructor(
+    /*
     private ClimateService: ClimateService, 
-    private PlantService: PlantService
+    private PlantService: PlantService,
+    private plantTypeService: PlantTypesService
+    */
   ) { }
 
   Objects: any[];
 
   ngOnInit(): void {
-    this.getAllClimates();
+    /*
+    this.getAllPlantTypes();
+    */
   }
 
+  /*
   getAllClimates() {
     this.ClimateService.get().subscribe(
       data => {
@@ -34,13 +42,6 @@ export class ListComponent implements OnInit {
     );
   }
 
-  //todo: Get x Items from API, when called again, get x Items
-  //Example: Get 5 Items, then, get next 5 Items
-  // 0 - 5, 5 - 10
-  //GetNClimates(indexStart, Amount)
-  //1st GetNClimates(0, 5)
-  //2nd GetNClimates(5, 5)
-
   getAllPlants() {
     this.PlantService.get().subscribe(
       data => {
@@ -51,6 +52,24 @@ export class ListComponent implements OnInit {
       () => console.log("got plants")
     );
   }
+
+  getAllPlantTypes() {
+    this.plantTypeService.get().subscribe(
+      data => {
+        this.Objects = <PlantTypeObj[]>data;
+        console.log(this.Objects);
+      },
+      err => console.error(err),
+      () => console.log("got plants types")
+    );
+  }
+  //todo: Get x Items from API, when called again, get x Items
+  //Example: Get 5 Items, then, get next 5 Items
+  // 0 - 5, 5 - 10
+  //GetNClimates(indexStart, Amount)
+  //1st GetNClimates(0, 5)
+  //2nd GetNClimates(5, 5)
+*/
 
   reverseOrder() {}
 }

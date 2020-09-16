@@ -1,0 +1,14 @@
+<div class="form-group load-in">
+    <h1>Image Upload</h1>
+    <form id="article-form" [formGroup]="ArticleForm" (ngSubmit)="post(ArticleForm.value)">
+        <img id="source-image" [src]="url">
+        
+        <label>Id:</label>
+        <input type="number" formControlName="PlantID">
+        
+        <input id="article-file" class="input-file" type="file" formControlName="Image" (change)="onFileChanged($event)">
+        <label class="input-button" for="article-file">Upload Image</label>
+        
+        <button class="input-button" type="submit" [disabled]="!ArticleForm.valid">Post</button>
+    </form>
+</div>

@@ -12,3 +12,21 @@ export class PlantService extends CrudService<PlantObj, number> {
     super(_http, 'https://localhost:44356/api/plants');
    }
 }
+
+@Injectable({
+  providedIn: 'root'
+})
+export class PlantImageService {
+
+  constructor (private http: HttpClient) {}
+
+  readonly _base: string = 'https://localhost:44356/api/plants/image';
+
+  put(id: number, image64: ImagePlant) {
+    return this.http.put<ImagePlant>(this._base + '/' + id, image64);
+  }
+}
+
+export class ImagePlant {
+  image: string;
+}

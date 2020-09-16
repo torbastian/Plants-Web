@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ClimateService } from '../../services/climate.service';
 import { ClimateObj } from '../../models/climate-model';
-import { ComponentOperations } from '../../component-service-interface';
+import { ComponentOperations } from '../component-service-interface';
 
 @Component({
   selector: 'app-climate',

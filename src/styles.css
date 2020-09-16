@@ -24,8 +24,8 @@ html {
 }
 
 #content {
-    min-height: calc(100vh - 60px);
     padding: 10px;
+    min-height: calc(100vh - 160px);
 }
 
 input:focus {
@@ -34,4 +34,20 @@ input:focus {
 
 button:focus {
     outline: none;
+}
+
+.load-in {
+    animation: load-in 0.4s ease-in-out;
+}
+
+@keyframes load-in {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+
+    100% {
+        opacity: 100%;
+        transform: translateY(0);
+    }
 }

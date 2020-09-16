@@ -1,10 +1,10 @@
 .footer {
-  background-color: var(--accent-color-1);
-  box-sizing: border-box;
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  padding: 10px;
+ display: flex;
+ justify-content: space-between;
+ background-color: var(--accent-color-1);
+ padding: 10px;
+ height: 60px;
+ align-items: center;
 }
 
 .footer a {

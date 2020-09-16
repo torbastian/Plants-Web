@@ -1,0 +1,72 @@
+#source-image {
+    width: 200px;
+    height: 200px;
+    background-color: var(--accent-color-2);
+    margin-bottom: 10px;
+}
+
+#article-form {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    margin: 10px auto;
+    font-size: 1.2em;
+}
+
+.form-group {
+    background-color: var(--accent-color-1);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.input-file {
+    visibility: hidden;
+    position: absolute;
+    height: 0.1px;
+    width: 0.1px;
+}
+
+label.input-button::before {
+    content: '^ ';
+}
+
+.input-button {
+    background: linear-gradient(180deg, #f9f9f9, #cecdcd);
+    border-radius: 3px;
+    outline: none;
+    border: none;
+    white-space: nowrap;
+    text-align: center;
+    font-weight: 700;
+    padding: 5px 8px;
+    font-size: 15pt;
+    cursor: pointer;
+    transition: 0.1s all ease-in-out;
+}
+
+.input-button:active {
+    background: linear-gradient(0deg, #f9f9f9, #cecdcd);
+}
+
+.input-button[type=submit] {
+    background: linear-gradient(180deg, #3699f7, #2b82d3);
+    color: white;
+    box-shadow: 0px 3px #20619e;
+}
+
+.input-button:disabled {
+    opacity: 50%;
+    cursor: default;
+    background: linear-gradient(0deg, #3699f7, #2b82d3);
+    box-shadow: 0px 1px #20619e;
+}
+
+.input-button[type=submit]:active {
+    background: linear-gradient(0deg, #3699f7, #2b82d3);
+    box-shadow: 0px 1px #20619e;
+}
+
+#article-form label, #article-form input, #article-form button {
+    margin: 3px 0;
+    font-weight: 700;
+}

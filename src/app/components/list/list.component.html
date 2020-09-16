@@ -1,5 +1,5 @@
-<div class="list-container">
-    <div  class="list-item" *ngFor="let object of Objects">
+<div [@listAnimation]="Objects.length" class="list-container">
+    <div class="list-item" *ngFor="let object of Objects">
         <p>{{object.info}}</p>
     </div>
 </div>

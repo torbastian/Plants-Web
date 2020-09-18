@@ -1,19 +1,24 @@
 header {
+    z-index: 100;
     display: flex;
     justify-content: space-between;
     position: sticky;
     top: 0px;
-    background-color: var(--accent-color-1);
-    z-index: 100;
-    border-bottom: 1px solid var(--accent-color-3);
-    box-sizing: border-box;
+    background-color: var(--main-bg-color);
+    border-bottom: 1px solid var(--main-bg-darker);
     height: 60px;
+    padding: 10px;
+    box-sizing: border-box;
 }
 
 #logo {
-    width: 50px;
-    height: 50px;
-    margin: 5px;
+    height: 100%;
+    transition: color 0.2s ease-in-out;
+}
+
+#logo:hover {
+    cursor: pointer;
+    color: var(--strong-accent);
 }
 
 .active#expandable {
@@ -22,55 +27,89 @@ header {
 }
 
 nav button {
-    width: 60px;
-    height: 60px;
+    height: 100%;
+    width: 50px;
     border: none;
-    font-size: 1.4em;
-    background-color: var(--accent-color-3);
-    color: var(--main-bg-color);
+    font-size: 30px;
+    background-color: var(--main-bg-color);
+    color: var(--main-text-color);
+    transition: color 0.2s ease-in-out;
+}
+
+nav button i.fa-bars {
+    vertical-align: middle;
+}
+
+.fa-angle-right {
+    animation: left-in 0.2s ease-out;
+}
+
+nav button:hover {
+    color: var(--strong-accent);
+    cursor: pointer;
 }
 
 #expandable {
     display: none;
     flex-direction: column;
-    height: calc(100vh - 60px);
+    height: calc(100vh - 50px);
     width: 80vw;
     max-width: 400px;
     position: fixed;
-    background-color: var(--accent-color-3);
-    margin-top: 60px;
+    background-color: var(--main-bg-color);
+    border-left: 1px solid var(--main-bg-darker);
+    margin-top: 50px;
     right: 0;
+    box-shadow: var(--shadow) -11px 1px 9px -4px;
 }
 
 .headerboxes, .searchbar {
     padding: 10px;
-    font-size: 1.2em;
+    font-size: 19px;
     text-decoration: none;
     min-height: 20px;
     transition: 0.2s all;
-    color: var(--main-bg-color);
+}
+
+.sub {
+    list-style-type: none;
+}
+
+.sub .headerboxes {
+    padding-left: 20px;
+    font-size: 16px;
+    cursor: pointer;
 }
 
 .searchbar {
     color: var(--main-text-color);
+    border: none;
+    margin: 0 10px;
+    border-bottom: 1px solid var(--main-bg-darker);
+}
+
+.searchbar:focus {
+    border-bottom: 1px solid var(--main-text-color);
 }
 
 .headerboxes.active {
-    border-left: 5px solid var(--accent-color-1);
+    border-left: 5px solid var(--strong-accent);
 }
 
 .headerboxes:hover, .headerboxes:hover:visited {
-    background-color: var(--accent-color-1);
+    background-color: var(--main-bg-darker);
     color: var(--main-text-color);
+    border-left: 3px solid var(--strong-accent);
+    font-weight: 600;
 }
 
-.headerboxes:visited {
-    color: var(--main-bg-color);
+.headerboxes, .headerboxes:visited {
+    color: var(--main-text-color);
 }
 
 @keyframes left-in {
     0% {
-        transform: translateX(40px);
+        transform: translateX(20px);
     }
 
     100% {

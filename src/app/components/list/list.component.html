@@ -1,5 +1,15 @@
 <div [@listAnimation]="Objects.length" class="list-container">
-    <div class="list-item" *ngFor="let object of Objects">
-        <p>{{object.info}}</p>
+    <div id="list-controls">
+        <button id="reverse" data-text="Reverse" class="btn tooltip" (click)="reverseOrder()">
+                <i [ngClass]="{'fa-arrow-up' : !reverse, 'fa-arrow-down' : reverse}" class="fas"></i>
+        </button>
     </div>
+    <ng-container *ngIf="listType != 'plants'; else plantBlock">
+    <div class="list-item border tooltip" [attr.data-text]="object.id" *ngFor="let object of Objects">
+            <p>{{object.info}}</p>
+        </div>
+    </ng-container>
+    <ng-template #plantBlock>
+        <app-plant [plant]="plant" *ngFor="let plant of Objects"></app-plant>
+    </ng-template>
 </div>

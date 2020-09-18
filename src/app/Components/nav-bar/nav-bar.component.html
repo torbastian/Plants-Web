@@ -1,14 +1,17 @@
 <header>
-  <img (click)="active = false" [routerLink]="[ 'Home' ]" src="../../assets/Home.png" id="logo" />
+  <h1 (click)="active = false" [routerLink]="[ 'Home' ]"  id="logo">Plants</h1>
   <nav>
-    <button (click)="active = !active">=</button>
+    <button (click)="active = !active"><i [ngClass]="{'fa-bars' : !active, 'fa-angle-right' : active}" class="fas"></i></button>
   </nav>
-  <div id="expandable" [ngClass]="{
-      'active' : active
-    }">
+  <div id="expandable" [ngClass]="{ 'active' : active }">
     <a class="headerboxes" (click)="active = false" [routerLink]="[ 'Home' ]" routerLinkActive="active">Home</a>
     <a class="headerboxes" (click)="active = false" href="">Explore</a>
-    <a class="headerboxes" (click)="active = false" [routerLink]="[ 'Types' ]" routerLinkActive="active">Types</a>
+    <a class="headerboxes" (click)="active = false" [routerLink]="[ 'List', { type: 'climates' } ]" routerLinkActive="active">List</a>
+    <ul class="sub">
+      <li class="headerboxes" (click)="active = false" [routerLink]="['List', {type: 'plants'}]">Plants</li>
+      <li class="headerboxes" (click)="active = false" [routerLink]="['List', {type: 'climates'}]">Climates</li>
+      <li class="headerboxes" (click)="active = false" [routerLink]="['List', {type: 'types'}]">Types</li>
+    </ul>
     <input class="searchbar" type="text" placeholder="Search.." />
     <a class="headerboxes" (click)="active = false" [routerLink]="[ 'Login' ]" routerLinkActive="active">Login</a>
     <a class="headerboxes" (click)="active = false" [routerLink]="[ 'Article-Creator' ]" routerLinkActive="active">Article Creator TEMP</a>

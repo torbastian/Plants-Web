@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ClimateService } from '../../services/climate.service';
 import { ClimateObj } from '../../models/climate-model';
-import { ComponentOperations } from '../component-service-interface';
 
 @Component({
   selector: 'app-climate',
@@ -9,7 +8,7 @@ import { ComponentOperations } from '../component-service-interface';
   styleUrls: ['./climate.component.css']
 })
 
-export class ClimateComponent implements OnInit, ComponentOperations {
+export class ClimateComponent implements OnInit {
 
   constructor(private ClimateService: ClimateService) { }
 
@@ -24,7 +23,6 @@ export class ClimateComponent implements OnInit, ComponentOperations {
     this.ClimateService.get().subscribe(
       data => {
         this.objects = <ClimateObj[]>data;
-        console.log(data);
       },
       err => console.error(err),
       () => console.log("got Climates")
@@ -35,7 +33,6 @@ export class ClimateComponent implements OnInit, ComponentOperations {
     this.ClimateService.getById(id).subscribe(
       data => {
         this.object = <ClimateObj>data;
-        console.log(data);
       },
       err => console.error(err),
       () => console.log("Got Climate")
@@ -45,7 +42,6 @@ export class ClimateComponent implements OnInit, ComponentOperations {
   delete(id: number) {
     this.ClimateService.delete(id).subscribe(
       data => {
-        console.log(data);
       },
       err => console.error(err),
       () => console.log("Deleted Climate")
@@ -55,7 +51,6 @@ export class ClimateComponent implements OnInit, ComponentOperations {
   put(Obj: ClimateObj) {
     this.ClimateService.update(Obj.id, Obj).subscribe(
       data => {
-        console.log(data);
       },
       err => console.error(err),
       () => console.log("Updated Climate")
@@ -65,7 +60,6 @@ export class ClimateComponent implements OnInit, ComponentOperations {
   post(Obj: ClimateObj) {
     this.ClimateService.create(Obj).subscribe(
       data => {
-        console.log(data);
       },
       err => console.error(err),
       () => console.log("Created new Climate")

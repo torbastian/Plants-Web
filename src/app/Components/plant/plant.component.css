@@ -1,0 +1,16 @@
+.plant-image {
+    width: 250px;
+    height: 250px;
+    border-radius: 6px;
+    background-color: var(--strong-accent);
+}
+
+.username {
+    color: var(--main-text-lighter);
+    margin: 5px 0;
+}
+
+.plant {
+    padding: 10px;
+    background-color: var(--main-bg-color);
+}

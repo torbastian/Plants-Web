@@ -25,8 +25,13 @@ export class PlantImageService {
   put(id: number, image64: ImagePlant) {
     return this.http.put<ImagePlant>(this._base + '/' + id, image64);
   }
+
+  get(id: number) {
+    return this.http.get<ImagePlant>(this._base + '/' + id);
+  }
 }
 
 export class ImagePlant {
+  id: number;
   image: string;
 }

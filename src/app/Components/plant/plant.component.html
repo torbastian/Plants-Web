@@ -1,1 +1,6 @@
-<p>plant works!</p>
+<div class="plant border">
+    <div *ngIf="loading" class="plant-image"></div>
+    <img [ngClass]="{'fade-in' : !loading}" (load)="onLoad()" class="plant-image" [src]="base64image" alt="Image of a plant">
+    <h2>{{plant.info}}</h2>
+    <p class="username">By: {{plant.username}}</p>
+</div>

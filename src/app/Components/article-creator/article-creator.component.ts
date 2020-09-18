@@ -10,7 +10,7 @@ import { PlantObj } from 'src/app/models/plant-model';
 })
 export class ArticleCreatorComponent implements OnInit {
   ArticleForm = new FormGroup({
-    PlantID: new FormControl(0, Validators.required),
+    PlantID: new FormControl(1, Validators.required),
     Image: new FormControl("", Validators.required)
   });
 
@@ -40,6 +40,7 @@ export class ArticleCreatorComponent implements OnInit {
       //a pure Base64 encoding of the image
       reader.onload = (event) => {
         this.url = reader.result;
+        console.log(this.url);
         this.base64image = btoa(this.url);
       }
     }
@@ -57,6 +58,6 @@ export class ArticleCreatorComponent implements OnInit {
       err => console.error(err),
       () => console.log("Updated plant " + id)
     );
- 
+
   }
 }

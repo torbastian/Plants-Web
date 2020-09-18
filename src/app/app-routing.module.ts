@@ -10,7 +10,7 @@ import { ArticleCreatorComponent } from './components/article-creator/article-cr
 const routes: Routes = [
   {path:'About', component: AboutComponent},
   {path:'Contact', component: ContactComponent},
-  {path:'Types', component: ListComponent},
+  {path:'List', component: ListComponent},
   {path:'Home', component: HomeComponent},
   {path:'Login', component: LoginComponent},
   {path:'Article-Creator', component: ArticleCreatorComponent},

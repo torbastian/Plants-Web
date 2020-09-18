@@ -1,4 +1,4 @@
-import { Component, OnInit, NgModule, HostBinding } from '@angular/core';
+import { Component, OnInit, NgModule, HostBinding, Input } from '@angular/core';
 import { ClimateObj } from '../../models/climate-model';
 import { ClimateService } from '../../services/climate.service';
 import { PlantObj } from '../../models/plant-model'
@@ -6,7 +6,8 @@ import { PlantService } from '../../services/plant.service';
 import { CrudService } from 'src/app/services/crud-service.service';
 import { PlantTypesService } from 'src/app/services/plant-types.service';
 import { PlantTypeObj } from 'src/app/models/plant-type-model';
-import {trigger, transition, style, animate, query, stagger} from '@angular/animations';
+import { trigger, transition, style, animate, query, stagger } from '@angular/animations';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'app-list',
@@ -16,37 +17,67 @@ import {trigger, transition, style, animate, query, stagger} from '@angular/anim
     trigger('listAnimation', [
       transition('* => *', [
         query(':enter', [
-          style({opacity: 0, transform: 'translateY(30px)'}),
+          style({ opacity: 0, transform: 'translateY(30px)' }),
           stagger(90, [
-            animate('0.5s ease-out', style({opacity: 1, transform: 'none'}))
+            animate('0.5s ease-out', style({ opacity: 1, transform: 'none' }))
           ])
-        ], {optional: true})
+        ], { optional: true })
       ])
     ])
   ]
 })
 export class ListComponent implements OnInit {
-  
+  @Input() listType?: string;
+
   constructor(
     private ClimateService: ClimateService,
     private PlantService: PlantService,
-    private PlantTypesService: PlantTypesService
+    private PlantTypesService: PlantTypesService,
+    private route: ActivatedRoute
   ) { }
 
   Objects: any[] = [];
+  reverse: boolean = false;
 
   ngOnInit(): void {
-    this.getAllClimates();
+    this.route.paramMap.subscribe( paramMap => {
+      this.listType = paramMap.get('type');
+      this.getList();
+    });
+  }
+
+  getList() {
+    if (this.Objects.length > 0) {
+      this.Objects = [];
+      this.reverse = false;
+    }
+
+    switch (this.listType) {
+      case 'climates':
+        this.getAllClimates();
+        break;
+
+      case 'plants':
+        this.getAllPlants();
+        break;
+
+      case 'types':
+        this.getAllPlantTypes();
+        break;
+
+      default:
+        this.getAllPlants();
+        this.listType = 'plants';
+        break;
+    }
   }
 
   getAllClimates() {
     this.ClimateService.get().subscribe(
       data => {
         this.Objects = <ClimateObj[]>data;
-        console.log(this.Objects);
       },
-      err => console.error(err),
-      () => console.log("got climates")
+      err => console.error(err)
     );
   }
 
@@ -54,10 +85,8 @@ export class ListComponent implements OnInit {
     this.PlantService.get().subscribe(
       data => {
         this.Objects = <PlantObj[]>data;
-        console.log(this.Objects);
       },
-      err => console.error(err),
-      () => console.log("got plants")
+      err => console.error(err)
     );
   }
 
@@ -65,10 +94,8 @@ export class ListComponent implements OnInit {
     this.PlantTypesService.get().subscribe(
       data => {
         this.Objects = <PlantTypeObj[]>data;
-        console.log(this.Objects);
       },
-      err => console.error(err),
-      () => console.log("got plants types")
+      err => console.error(err)
     );
   }
 
@@ -79,5 +106,8 @@ export class ListComponent implements OnInit {
   //1st GetNClimates(0, 5)
   //2nd GetNClimates(5, 5)
 
-  reverseOrder() {}
+  reverseOrder() {
+    this.Objects = this.Objects.reverse();
+    this.reverse = !this.reverse;
+   }
 }

@@ -4,7 +4,7 @@ header {
     justify-content: space-between;
     position: sticky;
     top: 0px;
-    background-color: var(--main-bg-color);
+    background-color: transparent;
     border-bottom: 1px solid var(--main-bg-darker);
     height: 60px;
     padding: 10px;
@@ -36,8 +36,8 @@ nav button {
     transition: color 0.2s ease-in-out;
 }
 
-nav button i.fa-bars {
-    vertical-align: middle;
+nav button i.fas {
+    vertical-align: -2px;
 }
 
 .fa-angle-right {

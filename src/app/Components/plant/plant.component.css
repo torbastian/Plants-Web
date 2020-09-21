@@ -2,6 +2,7 @@
     width: 250px;
     height: 250px;
     border-radius: 6px;
+    object-fit: cover;
     background-color: var(--strong-accent);
 }
 

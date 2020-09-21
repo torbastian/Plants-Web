@@ -32,6 +32,10 @@
     margin-bottom: 0;
 }
 
+#list-controls .btn:active {
+    transform: scale(0.8);
+}
+
 #list-controls .btn:hover {
     color: var(--strong-accent);
 }

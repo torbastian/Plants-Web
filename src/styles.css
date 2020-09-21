@@ -37,7 +37,6 @@ a:hover {
 }
 
 body {
-    font-family: sans-serif;
     color: var(--main-text-color);
 }
 
@@ -48,31 +47,6 @@ html {
 #content {
     padding: 10px;
     min-height: calc(100vh - 200px);
-}
-
-input:focus {
-    outline: none;
-}
-
-button:focus {
-    outline: none;
-}
-
-.border {
-    box-shadow: inset rgba(0,0,0,.15) 0 0 0 1px;
-    border-radius: 6px;
-}
-
-.border:hover {
-    box-shadow: inset rgba(0, 0, 0, 0.295) 0 0 0 1px;
-}
-
-.btn.border:hover {
-    box-shadow: inset rgba(0, 0, 0, 0.295) 0 0 0 1px, var(--shadow) 0 2px 5px 2px;
-}
-
-.btn.border:active {
-    box-shadow: inset rgba(0, 0, 0, 0.295) 0 0 0 1px, inset var(--shadow) 0 2px 4px 2px;
 }
 
 .btn {
@@ -90,6 +64,26 @@ button:focus {
     cursor: pointer;
     transition: 0.1s all ease-in-out;
 }
+
+.border {
+    border: 1px solid var(--main-bg-darker);
+    border-radius: 6px;
+}
+
+.border:hover {
+    border: 1px solid var(--main-text-lighter);
+}
+
+.btn.border:hover {
+    border: 1px solid var(--main-text-lighter);
+    box-shadow: var(--shadow) 0 1px 3px 1px;
+}
+
+.btn.border:active {
+    border: 1px solid var(--main-text-lighter);
+    box-shadow: inset var(--shadow) 0 2px 4px 2px;
+}
+
 
 .submit-button {
     background-color: var(--submit);
@@ -117,7 +111,7 @@ button:focus {
     pointer-events: none;
 
     background: var(--main-bg-darker);
-    color: var(--main-bg-color);
+    color: var(--main-text-lighter);
 
     font-size: 14px;
     border-radius: 0 6px 6px 6px;

@@ -10,12 +10,13 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { ClimateComponent } from './components/climate/climate.component';
 import { ListComponent } from './components/list/list.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { AboutComponent } from './Components/about/about.component';
-import { ContactComponent } from './Components/contact/contact.component';
-import { HomeComponent } from './Components/home/home.component';
-import { LoginComponent } from './Components/login/login.component';
+import { AboutComponent } from './components/about/about.component';
+import { ContactComponent } from './components/contact/contact.component';
+import { HomeComponent } from './components/home/home.component';
 import { ArticleCreatorComponent } from './components/article-creator/article-creator.component';
 import { PlantComponent } from './components/plant/plant.component';
+import { AccountComponent } from './components/account/account.component';
+import { LoginComponent } from './components/account/login/login.component';
 
 
 @NgModule({
@@ -28,9 +29,10 @@ import { PlantComponent } from './components/plant/plant.component';
     AboutComponent,
     ContactComponent,
     HomeComponent,
-    LoginComponent,
     ArticleCreatorComponent,
-    PlantComponent
+    PlantComponent,
+    AccountComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

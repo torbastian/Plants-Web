@@ -27,11 +27,13 @@ export class PlantComponent implements OnInit {
 
   //Get Image from database by the ID 
   getImage(id: number) {
-    
     this.PlantImageService.get(id).subscribe(
       data => {
         let pImage = <ImagePlant>data;
-        this.base64image = atob(pImage.image);
+        //Timeout used in testing to simulate longer load times
+        setTimeout(() => {
+          this.base64image = atob(pImage.image);
+        }, 0);
       },
       err => console.error(err)
     );

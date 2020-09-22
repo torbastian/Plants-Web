@@ -4,7 +4,7 @@ header {
     justify-content: space-between;
     position: sticky;
     top: 0px;
-    background-color: transparent;
+    background-color: var(--main-bg-color);
     border-bottom: 1px solid var(--main-bg-darker);
     height: 60px;
     padding: 10px;
@@ -31,7 +31,7 @@ nav button {
     width: 50px;
     border: none;
     font-size: 30px;
-    background-color: var(--main-bg-color);
+    background-color: transparent;
     color: var(--main-text-color);
     transition: color 0.2s ease-in-out;
 }

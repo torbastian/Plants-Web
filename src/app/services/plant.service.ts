@@ -3,13 +3,15 @@ import { CrudService } from './crud-service.service';
 import { HttpClient } from '@angular/common/http';
 import { PlantObj } from '../models/plant-model'
 
+import { environment } from '../../environments/environment';
+
 //Singleton; This service is available throughout the site
 @Injectable({
   providedIn: 'root'
 })
 export class PlantService extends CrudService<PlantObj, number> {
   constructor(protected _http: HttpClient) {
-    super(_http, 'https://localhost:44356/api/plants');
+    super(_http, environment.apiUrl + '/plants');
    }
 }
 
@@ -20,7 +22,7 @@ export class PlantImageService {
 
   constructor (private http: HttpClient) {}
 
-  readonly _base: string = 'https://localhost:44356/api/plants/image';
+  readonly _base: string = environment.apiUrl + '/plants/image';
 
   put(id: number, image64: ImagePlant) {
     return this.http.put<ImagePlant>(this._base + '/' + id, image64);

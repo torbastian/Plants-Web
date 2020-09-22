@@ -13,7 +13,7 @@
     --input-shade-1: #f9f9f9;
     --input-shade-2: #cecdcd;
 
-    --shadow: #5c5c5cc2;
+    --shadow: #555555;
 }
 
 * {
@@ -46,11 +46,13 @@ html {
 
 #content {
     padding: 10px;
+    box-sizing: border-box;
     min-height: calc(100vh - 200px);
+    width: 100%;
+    overflow: hidden;
 }
 
 .btn {
-    /*background: linear-gradient(180deg, var(--input-shade-1), var(--input-shade-2));*/
     background: 0 0;
     border-radius: 6px;
     outline: none;

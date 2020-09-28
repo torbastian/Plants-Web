@@ -7,6 +7,7 @@ import { HomeComponent } from './components/home/home.component';
 import { AccountComponent } from './components/account/account.component';
 import { LoginComponent } from './components/account/login/login.component';
 import { ArticleCreatorComponent } from './components/article-creator/article-creator.component';
+import { ArticleComponent } from './components/article/article.component';
 
 const routes: Routes = [
   {path:'About', component: AboutComponent},
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path:'Article-Creator', component: ArticleCreatorComponent},
   {path:'Account', component: AccountComponent},
   {path: 'Account/Login', component: LoginComponent},
+  {path: 'Article/:id', component: ArticleComponent},
   {path: '', redirectTo: '/Home', pathMatch: 'full'}
 ];
 

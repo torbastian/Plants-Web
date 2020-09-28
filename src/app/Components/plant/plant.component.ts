@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { PlantService, PlantImageService, ImagePlant } from '../../services/plant.service';
+import { PlantImageService, ImagePlant } from '../../services/plant.service';
 import { PlantObj } from '../../models/plant-model';
-import { toBase64String } from '@angular/compiler/src/output/source_map';
-import { DomSanitizer, SafeHtml, SafeUrl } from '@angular/platform-browser';
+import { SafeUrl } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-plant',
@@ -13,9 +13,8 @@ export class PlantComponent implements OnInit {
   @Input() plant: PlantObj;
 
   constructor(
-    protected plantService: PlantService,
     protected PlantImageService: PlantImageService,
-    private domSanitizer: DomSanitizer
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -37,6 +36,10 @@ export class PlantComponent implements OnInit {
       },
       err => console.error(err)
     );
+  }
+
+  gotoArticle() {
+   this.router.navigate(['Article/' + this.plant.id]);
   }
 
   onLoad() {

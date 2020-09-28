@@ -1,4 +1,4 @@
-<div class="plant border">
+<div class="plant border" (click)="gotoArticle()">
     <div *ngIf="loading" class="plant-placeholder"></div>
     <img [ngClass]="{'image-load' : !loading}" (load)="onLoad()" class="plant-image" [src]="base64image" alt="Image of a plant">
     <h2>{{plant.info}}</h2>

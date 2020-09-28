@@ -52,14 +52,15 @@ nav button:hover {
 #expandable {
     display: none;
     flex-direction: column;
-    height: calc(100vh - 50px);
+    position: fixed;
+    right: 0;
+    top: 0;
+    height: calc(100vh - 60px);
     width: 80vw;
     max-width: 400px;
-    position: fixed;
     background-color: var(--main-bg-color);
     border-left: 1px solid var(--main-bg-darker);
-    margin-top: 50px;
-    right: 0;
+    margin-top: 60px;
     box-shadow: var(--shadow) -11px 1px 9px -4px;
 }
 

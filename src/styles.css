@@ -121,6 +121,10 @@ html {
     animation: tooltip-fade 1s ease-in-out;
 }
 
+.pointer-child > *:hover {
+    cursor: pointer;
+}
+
 .load-in {
     animation: load-in 0.5s ease-in-out;
 }

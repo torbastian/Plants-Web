@@ -1,4 +1,4 @@
-<div id="article">
+<div id="article" class="load-in">
     <h1 class="title" *ngIf="loaded">{{plant.info}}</h1>
     <h1 class="title" *ngIf="notFound">Article Not Found</h1>
     <app-plant id="article-plant" *ngIf="plant != null" [plant]="plant"></app-plant>

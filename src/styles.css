@@ -1,29 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
+
 :root {
     --main-text-color: #000000;
     --main-text-lighter: #5c5c5c;
-
-    --main-bg-color:#FFF;
+    --main-bg-color: #FFF;
     --main-bg-darker: #d6d6d6;
     --strong-accent: #5CDB95;
-
     --submit: #06f;
-    --submit-hover:#0358d8; 
-
+    --submit-hover: #0358d8;
     --input-shade-1: #f9f9f9;
     --input-shade-2: #cecdcd;
-
     --shadow: #555555;
 }
 
 * {
-    margin:0;
+    margin: 0;
     padding: 0;
     font-family: 'Rubik', sans-serif;
 }
 
 *:focus {
-    outline:none;
+    outline: none;
 }
 
 a {
@@ -86,7 +83,6 @@ html {
     box-shadow: inset var(--shadow) 0 2px 4px 2px;
 }
 
-
 .submit-button {
     background-color: var(--submit);
     color: white;
@@ -102,26 +98,32 @@ html {
     cursor: default;
 }
 
-.tooltip:hover::before {
+.tooltip:hover::before, .tooltip-left:hover::before {
     content: attr(data-text);
     position: absolute;
+    display: inline-block;
 
-    margin-top: 25px;
-    margin-left: 20px;
-
+    box-sizing: border-box;
+    width: max-content;
     text-align: center;
     pointer-events: none;
 
     background: var(--main-bg-darker);
     color: var(--main-text-lighter);
-
+ 
     font-size: 14px;
     border-radius: 0 6px 6px 6px;
     padding: 5px;
+    transform: translateY(25px);
     animation: tooltip-fade 1s ease-in-out;
 }
 
-.pointer-child > *:hover {
+.tooltip-left:hover::before {
+    transform: translateY(25px) translateX(-100%);
+    border-radius: 6px 0 6px 6px;
+}
+
+.pointer-child>*:hover {
     cursor: pointer;
 }
 
@@ -138,7 +140,6 @@ html {
         opacity: 0;
         transform: translateX(10px);
     }
-    
     100% {
         opacity: 100%;
         transform: translateX(0);
@@ -149,7 +150,6 @@ html {
     0% {
         opacity: 0;
     }
-    
     100% {
         opacity: 100%;
     }
@@ -159,7 +159,6 @@ html {
     0%, 50% {
         opacity: 0;
     }
-
     60% {
         opacity: 100%;
     }

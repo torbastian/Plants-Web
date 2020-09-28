@@ -1,6 +1,6 @@
 <div [@listAnimation]="Objects.length" class="list-container">
     <div id="list-controls">
-        <button id="reverse" class="btn tooltip" data-text="Reverse" (click)="reverseOrder()">
+        <button id="reverse" class="btn tooltip-left" data-text="Reverse" (click)="reverseOrder()">
                 <i [ngClass]="{'fa-arrow-up' : !reverse, 'fa-arrow-down' : reverse}" class="fas"></i>
         </button>
     </div>

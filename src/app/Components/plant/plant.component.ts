@@ -19,10 +19,14 @@ export class PlantComponent implements OnInit {
 
   ngOnInit(): void {
     this.getImage(this.plant.id);
+    if (this.router.url.includes('/Article')) {
+      this.showInfo = true;
+    }
   }
 
   base64image: SafeUrl;
   loading: boolean = true;
+  showInfo: boolean = false;
 
   //Get Image from database by the ID 
   getImage(id: number) {

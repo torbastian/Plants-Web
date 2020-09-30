@@ -1,6 +1,14 @@
 <div class="plant border" (click)="gotoArticle()">
     <div *ngIf="loading" class="plant-placeholder"></div>
-    <img [ngClass]="{'image-load' : !loading}" (load)="onLoad()" class="plant-image" [src]="base64image" alt="Image of a plant">
+    <img [ngClass]="{'image-load' : !loading}" (load)="onLoad()" class="plant-image" [src]="base64image"
+        alt="Image of a plant">
     <h2>{{plant.info}}</h2>
     <p class="username">By: {{plant.username}}</p>
+    <div *ngIf="showInfo" class="info-box">
+        <ul>
+            <li>Type: {{plant.type}}</li>
+            <li>Climate: {{plant.climate}}</li>
+            <li>Edible: {{plant.edible}}</li>
+        </ul>
+    </div>
 </div>

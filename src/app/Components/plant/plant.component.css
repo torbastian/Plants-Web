@@ -30,6 +30,18 @@
     animation-fill-mode: forwards;
 }
 
+.info-box {
+    margin-top: 10px;
+}
+
+.info-box ul {
+    list-style-type: none;
+}
+
+.info-box ul li {
+    margin: 10px 0;
+}
+
 @keyframes image-load {
     0% {
         opacity: 0;

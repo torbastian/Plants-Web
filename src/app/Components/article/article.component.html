@@ -9,5 +9,5 @@
             {{article.tips}}
         </p>
     </div>
-    <app-comments *ngIf="article.id != undefined" [ArticleID]="article.id"></app-comments>
+    <app-comments *ngIf="article != null && article.id != undefined" [ArticleID]="article.id"></app-comments>
 </div>

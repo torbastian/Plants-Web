@@ -17,9 +17,9 @@ export class CommentsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log(this.ArticleID);
-    
-    this.getComments();
+    if (this.ArticleID != undefined) {
+      this.getComments();
+    }
   }
 
   getComments() {

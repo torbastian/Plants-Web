@@ -15,6 +15,7 @@
 }
 
 .username {
+    font-weight: 500;
     color: var(--main-text-lighter);
     margin: 5px 0;
 }

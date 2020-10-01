@@ -61,7 +61,6 @@ nav button:hover {
     background-color: var(--main-bg-color);
     border-left: 1px solid var(--main-bg-darker);
     margin-top: 60px;
-    box-shadow: var(--shadow) -11px 1px 9px -4px;
 }
 
 .headerboxes, .searchbar {

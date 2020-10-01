@@ -36,6 +36,10 @@
     outline: none;
 }
 
+p {
+    font-family: 'Roboto', sans-serif;
+}
+
 a {
     color: var(--main-text-color);
     text-decoration: none;

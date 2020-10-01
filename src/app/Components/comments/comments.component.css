@@ -1,13 +1,13 @@
 .comment-container {
-    border-top: 1px solid var(--main-bg-darker);
 }
 
 .comment-title {
-    margin: 10px 0 20px 0;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--main-bg-darker);
 }
 
 .comment {
-    padding: 10px;
+    padding: 10px 0;
     margin: 10px 0;
 }
 
@@ -16,7 +16,7 @@
 }
 
 .comment-content {
-    padding: 10px;
+    padding: 10px 0 15px 5px;
     border-bottom: 1px solid var(--main-bg-darker);
 }
 

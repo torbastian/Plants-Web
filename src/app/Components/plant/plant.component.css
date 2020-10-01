@@ -32,6 +32,7 @@
 
 .info-box {
     margin-top: 10px;
+    border-top: 1px solid var(--main-bg-darker);
 }
 
 .info-box ul {
@@ -40,6 +41,10 @@
 
 .info-box ul li {
     margin: 10px 0;
+}
+
+.info-box ul li:last-child {
+    margin: 10px 0 0 0;
 }
 
 @keyframes image-load {

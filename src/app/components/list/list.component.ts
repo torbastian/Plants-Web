@@ -1,13 +1,12 @@
-import { Component, OnInit, NgModule, HostBinding, Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ClimateObj } from '../../models/climate-model';
 import { ClimateService } from '../../services/climate.service';
 import { PlantObj } from '../../models/plant-model'
 import { PlantService } from '../../services/plant.service';
-import { CrudService } from 'src/app/services/crud-service.service';
 import { PlantTypesService } from 'src/app/services/plant-types.service';
 import { PlantTypeObj } from 'src/app/models/plant-type-model';
 import { trigger, transition, style, animate, query, stagger } from '@angular/animations';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-list',

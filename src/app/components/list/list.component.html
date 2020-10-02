@@ -1,15 +1,36 @@
-<div [@listAnimation]="Objects.length" class="list-container">
+<div class="list-container">
     <div id="list-controls">
+        <div class="filter" *ngIf="filter != null && filterInfo.length > 0">
+            <h2>{{filter}}</h2>
+            <div class="dropdown-filter">
+                <button class="dropdown-button"
+                    (click)="dropDownHidden = !dropDownHidden">{{filterInfo[0].info}}</button>
+                <ul *ngIf="filterInfo.length > 1" [ngClass]="{'hidden' : dropDownHidden}" class="dropdown-content fade-in">
+                    <li *ngFor="let item of filterInfo" [routerLink]="{type: 'plants', filter: filter, id: item.id}"
+                        (click)="dropDownHidden = !dropDownHidden">
+                        {{item.info}}
+                    </li>
+                </ul>
+            </div>
+        </div>
         <button id="reverse" class="btn tooltip-left" data-text="Reverse" (click)="reverseOrder()">
-                <i [ngClass]="{'fa-arrow-up' : !reverse, 'fa-arrow-down' : reverse}" class="fas"></i>
+            <i [ngClass]="{'fa-arrow-up' : !reverse, 'fa-arrow-down' : reverse}" class="fas"></i>
         </button>
     </div>
-    <ng-container *ngIf="listType != 'plants'; else plantBlock">
-    <div class="list-item border tooltip" [attr.data-text]="object.id" *ngFor="let object of Objects">
-            <p>{{object.info}}</p>
-        </div>
-    </ng-container>
-    <ng-template #plantBlock>
-        <app-plant [plant]="plant" class="pointer-child" *ngFor="let plant of Objects"></app-plant>
-    </ng-template>
+
+    <div [@listAnimation]="Objects.length" class="list-container">
+        <ng-container *ngIf="listType != 'plants'; else plantBlock">
+            <div class="list-item border tooltip" [attr.data-text]="'Id: ' + object.id"
+                [routerLink]="{type: 'plants', filter: listType, id: object.id}" *ngFor="let object of Objects">
+                <p>{{object.info}}</p>
+            </div>
+        </ng-container>
+
+        <ng-template #plantBlock>
+            <app-plant [plant]="plant" class="pointer-child" *ngFor="let plant of Objects"></app-plant>
+            <div *ngIf="Objects.length == 0">
+                <h2>No Results</h2>
+            </div>
+        </ng-template>
+    </div>
 </div>

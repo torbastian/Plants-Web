@@ -37,46 +37,109 @@ export class ListComponent implements OnInit {
 
   Objects: any[] = [];
   reverse: boolean = false;
+  filter: string;
+  filterID: number;
+  dropDownHidden: boolean = true;
+
+  filterInfo: any[] = [];
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe( paramMap => {
+    this.route.paramMap.subscribe(paramMap => {
       this.listType = paramMap.get('type');
+      this.filter = paramMap.get('filter');
+      this.filterID = parseInt(paramMap.get('id'));
       this.getList();
     });
   }
 
   getList() {
+    this.dropDownHidden = true;
+
     if (this.Objects.length > 0) {
       this.Objects = [];
       this.reverse = false;
     }
 
-    switch (this.listType) {
-      case 'climates':
-        this.getAllClimates();
-        break;
+    if (this.filter == null) {
+      //If no filter is specified, get by listytype
+      switch (this.listType) {
+        case 'climates':
+          this.getAllClimates();
+          break;
 
-      case 'plants':
-        this.getAllPlants();
-        break;
+        case 'plants':
+          this.getAllPlants();
+          break;
 
-      case 'types':
-        this.getAllPlantTypes();
-        break;
+        case 'types':
+          this.getAllPlantTypes();
+          break;
 
-      default:
-        this.getAllPlants();
-        this.listType = 'plants';
-        break;
+        default:
+          this.getAllPlants();
+          this.listType = 'plants';
+          break;
+      }
+    }
+    else {
+      //If filter is specified, get plants filter & filterID
+      switch (this.filter) {
+        case 'climates':
+          this.getPlantsByClimate(this.filterID);
+          if (this.filterInfo.length == 0)
+            this.getAllClimates(true);
+          else
+            this.changeFilterInfo();
+          break;
+
+        case 'types':
+          this.getPlantsByType(this.filterID);
+          if (this.filterInfo.length == 0)
+            this.getAllPlantTypes(true);
+          else
+            this.changeFilterInfo();
+          break;
+
+        default:
+          this.getAllPlants();
+          break;
+      }
     }
   }
 
-  getAllClimates() {
+  getAllClimates(onlyFilter: boolean = false) {
+    //Få fat i alle clima, gem dem i filterinfo,
+    //Hvis onlyFitler er false, gem dem i objects
     this.ClimateService.get().subscribe(
       data => {
-        this.Objects = <ClimateObj[]>data;
+        let objects = <ClimateObj[]>data;
+
+        this.filterInfo = objects;
+
+        if (!onlyFilter) {
+          this.Objects = objects;
+        }
       },
-      err => console.error(err)
+      err => console.error(err),
+      () => this.changeFilterInfo()
+    );
+  }
+
+  getAllPlantTypes(onlyFilter: boolean = false) {
+    //Få fat i alle plante typer, gem dem i filterinfo,
+    //Hvis onlyFitler er false, gem dem i objects
+    this.PlantTypesService.get().subscribe(
+      data => {
+        let objects = <PlantTypeObj[]>data;
+
+        this.filterInfo = objects;
+
+        if (!onlyFilter) {
+          this.Objects = objects;
+        }
+      },
+      err => console.error(err),
+      () => this.changeFilterInfo()
     );
   }
 
@@ -89,13 +152,37 @@ export class ListComponent implements OnInit {
     );
   }
 
-  getAllPlantTypes() {
-    this.PlantTypesService.get().subscribe(
+  getPlantsByType(id: number) {
+    this.PlantService.getByTypeId(id).subscribe(
       data => {
-        this.Objects = <PlantTypeObj[]>data;
+        this.Objects = <PlantObj[]>data;
       },
       err => console.error(err)
     );
+  }
+
+  getPlantsByClimate(id: number) {
+    this.PlantService.getByClimateId(id).subscribe(
+      data => {
+        this.Objects = <PlantObj[]>data;
+      },
+      err => console.error(err)
+    );
+  }
+
+  changeFilterInfo() {
+    //Get the item with maching id of filterID and put it on the first index
+    let x = this.filterInfo.findIndex(e => e.id == this.filterID);
+    let item = this.filterInfo.splice(x, 1)[0];
+    this.filterInfo.unshift(item);
+    this.sortFilterInfo();
+  }
+
+  sortFilterInfo() {
+    //Store the first item of the array, sort the rest then put it back
+    let firstItem = this.filterInfo.shift();
+    this.filterInfo.sort((a, b) => a.info.localeCompare(b.info));
+    this.filterInfo.unshift(firstItem);
   }
 
   //todo: Get x Items from API, when called again, get x Items
@@ -108,5 +195,5 @@ export class ListComponent implements OnInit {
   reverseOrder() {
     this.Objects = this.Objects.reverse();
     this.reverse = !this.reverse;
-   }
+  }
 }

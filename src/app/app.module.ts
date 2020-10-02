@@ -19,6 +19,7 @@ import { AccountComponent } from './components/account/account.component';
 import { LoginComponent } from './components/account/login/login.component';
 import { ArticleComponent } from './components/article/article.component';
 import { CommentsComponent } from './components/comments/comments.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { CommentsComponent } from './components/comments/comments.component';
     AccountComponent,
     LoginComponent,
     ArticleComponent,
-    CommentsComponent
+    CommentsComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,

@@ -17,12 +17,13 @@
     color: var(--main-text-color);
     text-align: center;
     transition: all 0.2s ease-in-out;
+    cursor: pointer;
 }
 
 #list-controls {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
+    display: grid;
+    grid-template-columns: auto 40px;
+    align-items: center;
     width: 100%;
     border-bottom: 1px solid var(--main-bg-darker);
     margin-bottom: 20px;
@@ -30,6 +31,8 @@
 
 #list-controls .btn {
     margin-bottom: 0;
+    margin-left: auto;
+    max-width: min-content;
 }
 
 #list-controls .btn:active {
@@ -38,4 +41,79 @@
 
 #list-controls .btn:hover {
     color: var(--strong-accent);
+}
+
+#list-controls #reverse {
+   grid-column: 2;
+}
+
+#list-controls .filter{
+    grid-column: 1;
+}
+
+.filter {
+    display: flex;
+    flex-direction: row;
+    border-right: 1px solid var(--main-bg-darker);
+    padding-right: 10px;
+}
+
+.filter h2 {
+    margin-right: 10px;
+    border-right: 1px solid var(--main-bg-darker);
+    padding-right: 10px;
+}
+
+.dropdown-filter {
+    width: 150px;
+}
+
+.dropdown-button {
+    border: none;
+    box-sizing: border-box;
+    background-color: transparent;
+    font-size: 24px;
+    width: 100%;
+    border-bottom: 1px solid var(--main-bg-darker);
+    transition: border 0.2s ease-in-out;
+}
+
+.dropdown-button:hover {
+    cursor: pointer;
+    border-bottom: 1px solid var(--main-text-color);
+}
+
+.dropdown-content {
+    z-index: 1;
+    list-style: none;
+    position: absolute;
+    font-size: 24px;
+    width: 150px;
+    box-sizing: border-box;
+    background-color: var(--main-bg-color);
+    border-left: 1px solid var(--main-bg-darker);
+    border-right: 1px solid var(--main-bg-darker);
+    border-bottom: 1px solid var(--main-bg-darker);
+}
+
+.dropdown-content li {
+    padding: 10px;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.dropdown-content li:hover {
+    background-color: var(--main-bg-darker);
+    cursor: pointer;
+}
+
+.dropdown-content li:nth-child(even) {
+    border-bottom: 1px solid var(--main-bg-darker);
+}
+
+.dropdown-content li:first-child {
+    display: none;
+}
+
+.dropdown-content.hidden {
+    display: none;
 }

@@ -117,7 +117,9 @@ export class ListComponent implements OnInit {
         this.filterInfo = objects;
 
         if (!onlyFilter) {
-          this.Objects = objects;
+          //This is done so that filterInfo and 
+          //Objects dont point to the same data
+          this.Objects = [...objects];
         }
       },
       err => console.error(err),
@@ -135,7 +137,9 @@ export class ListComponent implements OnInit {
         this.filterInfo = objects;
 
         if (!onlyFilter) {
-          this.Objects = objects;
+          //This is done so that filterInfo and 
+          //Objects dont point to the same data
+          this.Objects = [...objects];
         }
       },
       err => console.error(err),

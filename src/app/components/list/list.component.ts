@@ -7,6 +7,7 @@ import { PlantTypesService } from 'src/app/services/plant-types.service';
 import { PlantTypeObj } from 'src/app/models/plant-type-model';
 import { trigger, transition, style, animate, query, stagger } from '@angular/animations';
 import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-list',
@@ -32,7 +33,8 @@ export class ListComponent implements OnInit {
     private ClimateService: ClimateService,
     private PlantService: PlantService,
     private PlantTypesService: PlantTypesService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private location: Location
   ) { }
 
   Objects: any[] = [];
@@ -199,5 +201,9 @@ export class ListComponent implements OnInit {
   reverseOrder() {
     this.Objects = this.Objects.reverse();
     this.reverse = !this.reverse;
+  }
+
+  goBack() {
+    this.location.back();
   }
 }

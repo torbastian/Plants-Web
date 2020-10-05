@@ -1,5 +1,6 @@
 <div class="list-container">
     <div id="list-controls">
+        <i class="fas fa-angle-left back" (click)="goBack()"></i>
         <div class="filter" *ngIf="filter != null && filterInfo.length > 0">
             <h2 [routerLink]="{type: filter}">{{filter}}</h2>
             <div class="dropdown-filter">

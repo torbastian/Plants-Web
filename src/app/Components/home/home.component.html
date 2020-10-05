@@ -1,3 +1,30 @@
-<div class="load-in">
-    <p>home works!</p>
+<div id="home" class="load-in">
+    <div class="intro">
+        <h1>
+            The smallest
+            <span>plant database</span>
+            online!
+        </h1>
+        <p>
+            Browse through maybe a dosin different plants.
+        </p>
+    </div>
+    <div *ngIf="plant != null">
+        <h2>Newest addition</h2>
+        <app-plant class="plant" [plant]="plant"></app-plant>
+    </div>
+    <div class="site-links">
+        <div class="link" [routerLink]="['/List', {type: 'plants'}]">
+            <i class="fas fa-leaf"></i>
+            <a>All Plants</a>
+        </div>
+        <div class="link" [routerLink]="['/List', {type: 'climates'}]">
+            <i class="fas fa-cloud-sun-rain"></i>
+            <a>Sort plants by Climate</a>
+        </div>
+        <div class="link" [routerLink]="['/List', {type: 'types'}]">
+            <i class="fas fa-tree"></i>
+            <a>Sort plants by Type</a>
+        </div>
+    </div>
 </div>

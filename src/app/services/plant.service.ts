@@ -22,6 +22,10 @@ export class PlantService extends CrudService<PlantObj, number> {
    getByTypeId(id: number): Observable <PlantObj[]> {
      return this._http.get<PlantObj[]>(this._base + '/type/' + id);
    }
+
+   getLatest(): Observable <PlantObj> {
+     return this._http.get<PlantObj>(this._base + '/latest');
+   }
 }
 
 @Injectable({

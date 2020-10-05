@@ -5,8 +5,8 @@ import { PlantObj } from '../../models/plant-model';
 import { ArticleService } from '../../services/article.service';
 import { ArticleObj } from '../../models/article-model';
 
+import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
-import { empty } from 'rxjs';
 
 @Component({
   selector: 'app-article',
@@ -25,7 +25,8 @@ export class ArticleComponent implements OnInit {
     private PlantImageService: PlantImageService,
     private PlantService: PlantService,
     private ArticleService: ArticleService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private location: Location
   ) { }
 
   ngOnInit(): void {
@@ -59,5 +60,9 @@ export class ArticleComponent implements OnInit {
       },
       err => console.log(err)
     );
+  }
+
+  goBack() {
+    this.location.back();
   }
 }

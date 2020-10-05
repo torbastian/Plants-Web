@@ -1,3 +1,10 @@
+.plant {
+    padding: 10px;
+    background-color: var(--main-bg-color);
+    margin: 10px 0;
+    max-width: min-content;
+}
+
 .plant-image {
     width: 250px;
     max-width: 70vw;
@@ -18,12 +25,6 @@
     font-weight: 500;
     color: var(--main-text-lighter);
     margin: 5px 0;
-}
-
-.plant {
-    padding: 10px;
-    background-color: var(--main-bg-color);
-    margin: 10px 0;
 }
 
 .image-load {

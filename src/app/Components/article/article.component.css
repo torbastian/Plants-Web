@@ -10,10 +10,28 @@
     justify-self: center;
 }
 
-.title {
-    margin: 15px 0;
-    padding: 5px;
+.title-header {
+    display: flex;
+    flex-direction: row;
     border-bottom: 1px solid var(--main-bg-darker);
+    margin: 15px 0;
+    align-items: center;
+}
+
+.title-header i {
+    font-size: 32px;
+    padding: 20px 30px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.title-header i:hover {
+    color: var(--strong-accent);
+}
+
+.title {
+    border-left: 1px solid var(--main-bg-darker);
+    padding-left: 20px;
 }
 
 #article-content {

@@ -1,10 +1,10 @@
 <div class="list-container">
     <div id="list-controls">
         <div class="filter" *ngIf="filter != null && filterInfo.length > 0">
-            <h2>{{filter}}</h2>
+            <h2 [routerLink]="{type: filter}">{{filter}}</h2>
             <div class="dropdown-filter">
                 <button class="dropdown-button"
-                    (click)="dropDownHidden = !dropDownHidden">{{filterInfo[0].info}}</button>
+                    (click)="dropDownHidden = !dropDownHidden">{{filterInfo[0].info}}<i class="fas fa-long-arrow-alt-down"></i></button>
                 <ul *ngIf="filterInfo.length > 1" [ngClass]="{'hidden' : dropDownHidden}" class="dropdown-content fade-in">
                     <li *ngFor="let item of filterInfo" [routerLink]="{type: 'plants', filter: filter, id: item.id}"
                         (click)="dropDownHidden = !dropDownHidden">

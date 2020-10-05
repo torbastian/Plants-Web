@@ -51,16 +51,29 @@ nav button:hover {
 
 #expandable {
     display: none;
-    flex-direction: column;
+    flex-direction: row;
     position: fixed;
     right: 0;
     top: 0;
     height: calc(100vh - 60px);
-    width: 80vw;
+    width: 100vw;
+    background-color: transparent;
+    margin-top: 60px;
+    justify-content: flex-end;
+}
+
+#padder {
+    width: 100%;
+    background-color: transparent;
+}
+
+#expandable #link-container {
+    display: flex;
+    flex-direction: column;
     max-width: 400px;
+    height: calc(100vh - 60px);
     background-color: var(--main-bg-color);
     border-left: 1px solid var(--main-bg-darker);
-    margin-top: 60px;
 }
 
 .headerboxes, .searchbar {

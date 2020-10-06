@@ -4,7 +4,7 @@
     --main-text-color: #000000;
     --main-text-lighter: #5c5c5c;
     --main-bg-color: #FFF;
-    --main-bg-darker: #d6d6d6;
+    --main-bg-darker: #bdbdbd;
     --strong-accent: #34AF6E;
     --submit: #06f;
     --submit-hover: #0358d8;
@@ -153,6 +153,10 @@ html {
     animation: fade-in 0.2s ease-in-out;
 }
 
+.load-up {
+    animation: load-up 0.5s ease-in-out;
+}
+
 @keyframes load-in {
     0% {
         opacity: 0;
@@ -161,6 +165,17 @@ html {
     100% {
         opacity: 100%;
         transform: translateX(0);
+    }
+}
+
+@keyframes load-up {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    100% {
+        opacity: 100%;
+        transform: translateY(0);
     }
 }
 

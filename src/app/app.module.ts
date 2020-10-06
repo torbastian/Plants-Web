@@ -20,6 +20,9 @@ import { LoginComponent } from './components/account/login/login.component';
 import { ArticleComponent } from './components/article/article.component';
 import { CommentsComponent } from './components/comments/comments.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { AdminPanelComponent } from './components/admin-panel/admin-panel.component';
+import { ApprovalComponent } from './components/admin-panel/approval/approval.component';
+import { ClimatePanelComponent } from './components/admin-panel/climate-panel/climate-panel.component';
 
 
 @NgModule({
@@ -38,7 +41,10 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     LoginComponent,
     ArticleComponent,
     CommentsComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    AdminPanelComponent,
+    ApprovalComponent,
+    ClimatePanelComponent
   ],
   imports: [
     BrowserModule,

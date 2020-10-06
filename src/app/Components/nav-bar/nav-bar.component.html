@@ -6,9 +6,9 @@
   <div id="expandable" [ngClass]="{ 'active' : active }">
     <div id="padder" (click)="active = false"></div>
     <div id="link-container">
-      <a class="headerboxes" (click)="active = false" [routerLink]="[ 'Home' ]" routerLinkActive="active">Home</a>
+      <a class="headerboxes" (click)="active = false" [routerLink]="['Home']" routerLinkActive="active">Home</a>
       <a class="headerboxes" (click)="active = false" href="">Explore</a>
-      <a class="headerboxes" (click)="active = false" [routerLink]="[ 'List' ]" routerLinkActive="active">List</a>
+      <a class="headerboxes" (click)="active = false" [routerLink]="['List']" routerLinkActive="active">List</a>
       <ul class="sub">
         <li class="headerboxes" (click)="active = false" [routerLink]="['List', {type: 'plants'}]">Plants</li>
         <li class="headerboxes" (click)="active = false" [routerLink]="['List', {type: 'climates'}]">Climates</li>
@@ -16,9 +16,10 @@
       </ul>
       <input class="searchbar" type="text" placeholder="Search.." />
       <!-- Combine Account and login, login needs to be shown when user is not logged in, account is shown when the user is logged in -->
-      <a class="headerboxes" (click)="active = false" [routerLink]="[ 'Account' ]" routerLinkActive="active">Account</a>
+      <a class="headerboxes" (click)="active = false" [routerLink]="['Account' ]" routerLinkActive="active">Account</a>
       <a class="headerboxes" (click)="active = false" [routerLink]="['Account/Login']" routerLinkActive="active">Login</a>
-      <a class="headerboxes" (click)="active = false" [routerLink]="[ 'Article-Creator' ]" routerLinkActive="active">Article Creator TEMP</a>
+      <a class="headerboxes" (click)="active = false" [routerLink]="['Article-Creator' ]" routerLinkActive="active">Article Creator TEMP</a>
+      <a class="headerboxes" (click)="active = false" [routerLink]="['Admin']" routerLinkActive="active">Admin Panel</a>
     </div>
   </div>
 </header>

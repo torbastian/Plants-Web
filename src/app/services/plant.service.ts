@@ -26,6 +26,14 @@ export class PlantService extends CrudService<PlantObj, number> {
    getLatest(): Observable <PlantObj> {
      return this._http.get<PlantObj>(this._base + '/latest');
    }
+
+   getApproval(approvalType: number): Observable <PlantObj[]> {
+     return this._http.get<PlantObj[]>(this._base + '/approval/' + approvalType);
+   }
+
+   setApproveType(id: number, approvalType: number) {
+     return this._http.put(this._base + '/approval/' + id + '/' + approvalType, null);
+   }
 }
 
 @Injectable({

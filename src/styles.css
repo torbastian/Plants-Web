@@ -4,23 +4,11 @@
     --main-text-color: #000000;
     --main-text-lighter: #5c5c5c;
     --main-bg-color: #FFF;
-    --main-bg-darker: #bdbdbd;
+    --main-bg-darker: #cfcfcf;
     --strong-accent: #34AF6E;
     --submit: #06f;
     --submit-hover: #0358d8;
-    --input-shade-1: #f9f9f9;
-    --input-shade-2: #cecdcd;
-    --shadow: #555555;
-}
-
-[data-theme="dark"] {
-    --main-text-color: #e9e9e9;
-    --main-text-lighter: #5c5c5c;
-    --main-bg-color: #2e2e2e;
-    --main-bg-darker: #000000;
-    --strong-accent: #5CDB95;
-    --submit: #06f;
-    --submit-hover: #0358d8;
+    --submit-active: #3887ff;
     --input-shade-1: #f9f9f9;
     --input-shade-2: #cecdcd;
     --shadow: #555555;
@@ -84,7 +72,7 @@ html {
 .border {
     border: 1px solid var(--main-bg-darker);
     border-radius: 6px;
-    transition: border 0.2s ease-in-out;
+    transition: border 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
 .border:hover {
@@ -92,13 +80,13 @@ html {
 }
 
 .btn.border:hover {
-    border: 1px solid var(--main-text-lighter);
-    box-shadow: var(--shadow) 0 1px 3px 1px;
+    border: 1px solid var(--main-bg-darker);
+    box-shadow: var(--shadow) 0px 2px 7px 0px;
 }
 
 .btn.border:active {
-    border: 1px solid var(--main-text-lighter);
-    box-shadow: inset var(--shadow) 0 2px 4px 2px;
+    border: 1px solid var(--main-bg-darker);
+    box-shadow: inset var(--shadow) 1px 2px 4px 0px;
 }
 
 .submit-button {
@@ -109,6 +97,25 @@ html {
 
 .submit-button:hover:enabled {
     background-color: var(--submit-hover);
+}
+
+.secondary.submit-button {
+    background-color: var(--main-bg-color);
+    color: var(--main-text-color);
+    border: 1px solid var(--main-bg-darker);
+}
+
+.secondary.submit-button:hover {
+    border: 1px solid var(--main-text-color);
+    background-color: var(--main-bg-color);
+}
+
+.submit-button:active:enabled {
+    background-color: var(--submit-active);
+}
+
+.secondary.submit-button:active:enabled {
+    background-color: var(--main-bg-darker);
 }
 
 .btn:disabled {

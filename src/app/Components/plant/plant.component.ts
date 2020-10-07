@@ -22,11 +22,17 @@ export class PlantComponent implements OnInit {
     if (this.router.url.includes('/Article')) {
       this.showInfo = true;
     }
+
+    if (this.router.url.includes('/Admin')) {
+      this.showInfo = true;
+      this.minify = true;
+    }
   }
 
   base64image: SafeUrl;
   loading: boolean = true;
   showInfo: boolean = false;
+  minify: boolean = false;
 
   //Get Image from database by the ID 
   getImage(id: number) {

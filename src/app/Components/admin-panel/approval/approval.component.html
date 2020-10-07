@@ -1,4 +1,17 @@
 <div id="approval" class="load-in">
     <h1>Approval Panel</h1>
     <p>This is where the admin approves plants and articles</p>
+    <div id="approved-type-buttons">
+        <button class="btn border" [routerLink]="{id: 2}">All Pending</button>
+        <button class="btn border" [routerLink]="{id: 3}">All Denied</button>
+    </div>
+    <h1 class="type">{{currentType}} <span *ngIf="plants != []">{{plants.length}}</span></h1>
+    <div class="approve-plant border load-up" *ngFor="let plant of plants" >
+            <app-plant [plant]="plant"></app-plant>
+            <div class="approve-buttons">
+                <button (click)="setApproval(plant.id, 1)" class="btn submit-button">Approve</button>
+                <button *ngIf="currentTypeId == 3" (click)="setApproval(plant.id, 2)" class="btn secondary submit-button">Pending</button>
+                <button *ngIf="currentTypeId == 2" (click)="setApproval(plant.id, 3)" class="btn secondary submit-button">Deny</button>
+            </div>
+        </div>
 </div>

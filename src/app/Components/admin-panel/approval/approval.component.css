@@ -1,3 +1,53 @@
 h1 {
     font-size: 24px;
 }
+
+#approval {
+    width: 80vw;
+    max-width: 450px;
+    margin: auto;
+}
+
+#approved-type-buttons .btn {
+    margin: 10px 10px 0 0;
+}
+
+.type {
+    border-bottom: 1px solid var(--main-bg-darker);
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.type span {
+    background-color: var(--main-bg-darker);
+    padding: 5px;
+    border-radius: 5px;
+    margin-left: 10px;
+    padding: 5px 10px;
+}
+
+.approve-plant {
+    margin: 10px 0;
+    padding-top: 5px;
+    max-width: 445px;
+}
+
+.approve-buttons {
+    padding: 0 10px 0 10px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.approve-buttons .btn {
+    padding: 10px;
+}
+
+.approve-buttons button {
+    margin-right: 5px;
+}
+
+button.article-expand.btn {
+    margin-right: 0;
+}

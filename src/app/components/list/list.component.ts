@@ -5,26 +5,15 @@ import { PlantObj } from '../../models/plant-model'
 import { PlantService } from '../../services/plant.service';
 import { PlantTypesService } from 'src/app/services/plant-types.service';
 import { PlantTypeObj } from 'src/app/models/plant-type-model';
-import { trigger, transition, style, animate, query, stagger } from '@angular/animations';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+import { load_up } from '../../animations/load-up.animation';
 
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.css'],
-  animations: [
-    trigger('listAnimation', [
-      transition('* => *', [
-        query(':enter', [
-          style({ opacity: 0, transform: 'translateY(30px)' }),
-          stagger(90, [
-            animate('0.5s ease-out', style({ opacity: 1, transform: 'none' }))
-          ])
-        ], { optional: true })
-      ])
-    ])
-  ]
+  animations: [load_up]
 })
 export class ListComponent implements OnInit {
   @Input() listType?: string;

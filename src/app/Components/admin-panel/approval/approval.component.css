@@ -50,3 +50,8 @@ h1 {
 button.article-expand.btn {
     margin-right: 0;
 }
+
+.approve-buttons .negative {
+    margin-left: auto;
+    margin-right: 0;
+}

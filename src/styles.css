@@ -9,6 +9,9 @@
     --submit: #06f;
     --submit-hover: #0358d8;
     --submit-active: #3887ff;
+    --negative: #fc1d2f;
+    --negative-hover: #ce1827;
+    --negative-active: #f73545;
     --input-shade-1: #f9f9f9;
     --input-shade-2: #cecdcd;
     --shadow: #555555;
@@ -66,7 +69,7 @@ html {
     margin-bottom: 10px;
     font-size: 18px;
     cursor: pointer;
-    transition: 0.1s all ease-in-out;
+    transition: 0.2s all ease-in-out;
 }
 
 .border {
@@ -116,6 +119,22 @@ html {
 
 .secondary.submit-button:active:enabled {
     background-color: var(--main-bg-darker);
+}
+
+.negative.submit-button {
+    background-color: var(--negative);
+    color: var(--main-bg-color);
+    min-width: 50px;
+}
+
+.negative.submit-button:active:enabled {
+    background-color: var(--negative-active);
+    color: var(--main-bg-color);
+}
+
+.negative.submit-button:hover {
+    background-color: var(--negative-hover);
+    color: var(--main-bg-color);
 }
 
 .btn:disabled {

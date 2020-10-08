@@ -1,4 +1,21 @@
 <div id="climate-panel" class="load-in">
-        <h1>Climate Panel</h1>
-        <p>This is where the admin adds Climates</p>
+    <h1>Climate Panel</h1>
+    <p>This is where the admin adds and alters Climates</p>
+    <div id="climate-list" [@listAnimation]="Climates.length">
+            <div class="climate border"
+            *ngFor="let climate of Climates">
+            <div *ngIf="expandId != climate.id" class="climate-content">
+                <h1 class="id">{{climate.id}}</h1>
+                <h1 class="info">{{climate.info}}</h1>
+                <button class="alter btn secondary submit-button" (click)="setExpand(climate.id)"><i class="fas fa-cog"></i></button>
+            </div>
+            <form *ngIf="expandId == climate.id" class="climate-content"
+            [formGroup]="ClimateFormChange" (ngSubmit)="updateClimate()">
+            <button class="exit btn" (click)="setExpand(0)"><i class="fas fa-times"></i></button>
+            <input type="text" formControlName="ClimateName" [placeholder]="climate.info">
+            <button class="btn submit-button" type="submit" [disabled]="!ClimateFormChange.valid"><i class="fas fa-check"></i></button>
+        </form>
     </div>
+    <button class="add load-up btn submit-button" (click)="addTempClimate()"><i class="fas fa-plus"></i></button>
+    </div>
+</div>

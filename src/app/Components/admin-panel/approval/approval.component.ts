@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { PlantService } from '../../../services/plant.service';
 import { ApprovedTypesService } from '../../../services/approved-types.service';
-import { trigger, transition, style, animate, query, stagger } from '@angular/animations';
 import { PlantObj } from 'src/app/models/plant-model';
 import { ApprovedObj } from 'src/app/models/approved-model';
+import { load_up } from '../../../animations/load-up.animation';
 
 import { ActivatedRoute } from '@angular/router';
 
@@ -11,18 +11,7 @@ import { ActivatedRoute } from '@angular/router';
   selector: 'app-approval',
   templateUrl: './approval.component.html',
   styleUrls: ['./approval.component.css'],
-  animations: [
-    trigger('listAnimation', [
-      transition('* => *', [
-        query(':enter', [
-          style({ opacity: 0, transform: 'translateY(30px)' }),
-          stagger(90, [
-            animate('0.5s ease-out', style({ opacity: 1, transform: 'none' }))
-          ])
-        ], { optional: true })
-      ])
-    ])
-  ]
+  animations: [load_up]
 })
 export class ApprovalComponent implements OnInit {
 
@@ -40,9 +29,11 @@ export class ApprovalComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.currentTypeId = <number>params["id"];
-      if (this.currentTypeId == null || this.currentTypeId == 1)
+      if (this.currentTypeId == null || this.currentTypeId == 1) {
         this.currentTypeId = 2;
-      
+      }
+      this.plants = [];
+
       this.getPlantsByApprovedType(this.currentTypeId);
     })
 
@@ -83,6 +74,16 @@ export class ApprovalComponent implements OnInit {
     this.PlantService.setApproveType(id, approvalType).subscribe(
       data => {
 
+      },
+      err => console.error(err),
+      () => this.getPlantsByApprovedType(this.currentTypeId)
+    )
+  }
+
+  delete(id : number) {
+    this.PlantService.delete(id).subscribe(
+      data => {
+        console.log(data);
       },
       err => console.error(err),
       () => this.getPlantsByApprovedType(this.currentTypeId)

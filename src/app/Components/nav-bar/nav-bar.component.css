@@ -1,14 +1,21 @@
 header {
+    border-bottom: 1px solid var(--main-bg-darker);
+    top: 0;
+    position: sticky;
     z-index: 100;
+    height: 60px;
+    box-sizing: border-box;
+    background-color: var(--main-bg-color);
+}
+
+#nav-container {
     display: flex;
     justify-content: space-between;
-    position: sticky;
-    top: 0px;
-    background-color: var(--main-bg-color);
-    border-bottom: 1px solid var(--main-bg-darker);
-    height: 60px;
-    padding: 10px;
     box-sizing: border-box;
+    height: 60px;
+    max-width: 750px;
+    margin: auto;
+    padding: 10px;
 }
 
 #logo {
@@ -23,7 +30,6 @@ header {
 
 .active#expandable {
     display: flex;
-    animation: left-in 0.2s ease-out;
 }
 
 nav button {
@@ -38,10 +44,6 @@ nav button {
 
 nav button i.fas {
     vertical-align: -2px;
-}
-
-.fa-angle-right {
-    animation: left-in 0.2s ease-out;
 }
 
 nav button:hover {
@@ -60,6 +62,7 @@ nav button:hover {
     background-color: transparent;
     margin-top: 60px;
     justify-content: flex-end;
+    background-color: var(--main-bg-color);
 }
 
 #padder {
@@ -67,13 +70,17 @@ nav button:hover {
     background-color: transparent;
 }
 
+.active#expandable #link-container {
+    animation: top-down 0.2s ease-out;
+}
+
 #expandable #link-container {
     display: flex;
     flex-direction: column;
-    max-width: 400px;
+    text-align: center;
+    margin: auto;
     height: calc(100vh - 60px);
     background-color: var(--main-bg-color);
-    border-left: 1px solid var(--main-bg-darker);
 }
 
 .headerboxes, .searchbar {
@@ -89,8 +96,8 @@ nav button:hover {
 }
 
 .sub .headerboxes {
-    padding-left: 20px;
     font-size: 16px;
+    color: var(--main-text-lighter);
     cursor: pointer;
 }
 
@@ -98,6 +105,7 @@ nav button:hover {
     color: var(--main-text-color);
     border: none;
     margin: 0 10px;
+    max-width: 250px;
     border-bottom: 1px solid var(--main-bg-darker);
 }
 
@@ -105,28 +113,24 @@ nav button:hover {
     border-bottom: 1px solid var(--main-text-color);
 }
 
-.headerboxes.active {
-    border-left: 5px solid var(--strong-accent);
+.headerboxes.active, .headerboxes.active:visited {
+    color: var(--main-bg-color);
+    background-color: var(--strong-accent);
 }
 
 .headerboxes:hover, .headerboxes:hover:visited {
     background-color: var(--main-bg-darker);
     color: var(--main-text-color);
-    border-left: 3px solid var(--strong-accent);
-    padding-left: 25px;
-}
-
-.sub .headerboxes:hover {
-    padding-left: 30px;
+    transform: scale(1.1);
 }
 
 .headerboxes, .headerboxes:visited {
     color: var(--main-text-color);
 }
 
-@keyframes left-in {
+@keyframes top-down {
     0% {
-        transform: translateX(20px);
+        transform: translateY(20px);
     }
 
     100% {

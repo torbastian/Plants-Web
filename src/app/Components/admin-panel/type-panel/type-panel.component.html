@@ -1,0 +1,21 @@
+<div class="load-in admin-panel">
+    <h1>Type Panel</h1>
+    <p>This is where the admin adds and alters Types</p>
+    <div class="admin-panel-list" [@listAnimation]="Types.length">
+            <div class="admin-list-item border"
+            *ngFor="let Type of Types">
+            <div *ngIf="expandId != Type.id" class="admin-list-item-content">
+                <h1 class="id">{{Type.id}}</h1>
+                <h1 class="info">{{Type.info}}</h1>
+                <button class="alter btn secondary submit-button" (click)="setExpand(Type.id)"><i class="fas fa-cog"></i></button>
+            </div>
+            <form *ngIf="expandId == Type.id" class="admin-list-item-content"
+            [formGroup]="TypeFormChange" (ngSubmit)="updateType()">
+            <button class="exit btn" (click)="setExpand(0)"><i class="fas fa-times"></i></button>
+            <input type="text" formControlName="TypeName" [placeholder]="Type.info">
+            <button class="btn submit-button" type="submit" [disabled]="!TypeFormChange.valid"><i class="fas fa-check"></i></button>
+        </form>
+    </div>
+    <button class="add load-up btn submit-button" (click)="addTempType()"><i class="fas fa-plus"></i></button>
+    </div>
+</div>

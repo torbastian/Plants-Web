@@ -11,6 +11,8 @@ import { ArticleComponent } from './components/article/article.component';
 import { AdminPanelComponent } from './components/admin-panel/admin-panel.component';
 import { ApprovalComponent } from './components/admin-panel/approval/approval.component';
 import { ClimatePanelComponent } from './components/admin-panel/climate-panel/climate-panel.component';
+import { TypePanelComponent } from './components/admin-panel/type-panel/type-panel.component';
+import { EdiblePanelComponent } from './components/admin-panel/edible-panel/edible-panel.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 const routes: Routes = [
@@ -25,7 +27,9 @@ const routes: Routes = [
   {path: 'Admin', component: AdminPanelComponent, children: [
     {path: '', redirectTo: 'approval', pathMatch: 'full'},
     {path: 'approval', component: ApprovalComponent},
-    {path: 'climates', component: ClimatePanelComponent}
+    {path: 'climates', component: ClimatePanelComponent},
+    {path: 'types', component: TypePanelComponent},
+    {path: 'edibles', component: EdiblePanelComponent}
   ]},
   {path: '', redirectTo: '/Home', pathMatch: 'full'},
   {path: '**', component: PageNotFoundComponent}

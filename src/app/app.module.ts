@@ -23,6 +23,8 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { AdminPanelComponent } from './components/admin-panel/admin-panel.component';
 import { ApprovalComponent } from './components/admin-panel/approval/approval.component';
 import { ClimatePanelComponent } from './components/admin-panel/climate-panel/climate-panel.component';
+import { TypePanelComponent } from './components/admin-panel/type-panel/type-panel.component';
+import { EdiblePanelComponent } from './components/admin-panel/edible-panel/edible-panel.component';
 
 
 @NgModule({
@@ -44,7 +46,9 @@ import { ClimatePanelComponent } from './components/admin-panel/climate-panel/cl
     PageNotFoundComponent,
     AdminPanelComponent,
     ApprovalComponent,
-    ClimatePanelComponent
+    ClimatePanelComponent,
+    TypePanelComponent,
+    EdiblePanelComponent
   ],
   imports: [
     BrowserModule,

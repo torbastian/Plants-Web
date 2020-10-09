@@ -1,15 +1,15 @@
-<div id="climate-panel" class="load-in">
+<div class="load-in admin-panel">
     <h1>Climate Panel</h1>
     <p>This is where the admin adds and alters Climates</p>
-    <div id="climate-list" [@listAnimation]="Climates.length">
-            <div class="climate border"
+    <div class="admin-panel-list" [@listAnimation]="Climates.length">
+            <div class="admin-list-item border"
             *ngFor="let climate of Climates">
-            <div *ngIf="expandId != climate.id" class="climate-content">
+            <div *ngIf="expandId != climate.id" class="admin-list-item-content">
                 <h1 class="id">{{climate.id}}</h1>
                 <h1 class="info">{{climate.info}}</h1>
                 <button class="alter btn secondary submit-button" (click)="setExpand(climate.id)"><i class="fas fa-cog"></i></button>
             </div>
-            <form *ngIf="expandId == climate.id" class="climate-content"
+            <form *ngIf="expandId == climate.id" class="admin-list-item-content"
             [formGroup]="ClimateFormChange" (ngSubmit)="updateClimate()">
             <button class="exit btn" (click)="setExpand(0)"><i class="fas fa-times"></i></button>
             <input type="text" formControlName="ClimateName" [placeholder]="climate.info">

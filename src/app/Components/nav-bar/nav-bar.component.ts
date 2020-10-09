@@ -13,5 +13,4 @@ export class NavBarComponent implements OnInit {
   }
 
   active: boolean = false;
-
 }

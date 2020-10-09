@@ -5,6 +5,10 @@
     max-width: min-content;
 }
 
+.plant h2 {
+    margin-top: 10px;
+}
+
 .plant-image {
     display: none;
     width: 250px;
@@ -69,6 +73,7 @@
 
 .minify h2 {
     font-size: 20px;
+    margin-top: 0;
     margin-left: 10px;
 }
 

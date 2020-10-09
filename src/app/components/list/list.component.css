@@ -1,50 +1,50 @@
 .list-container {
-    display: grid;
-    grid-template-columns: 1fr;
-    justify-items: center;
-    width: 80vw;
-    max-width: 500px;
-    margin: auto;
+	display: grid;
+	grid-template-columns: 1fr;
+	justify-items: center;
+	width: 80vw;
+	max-width: 500px;
+	margin: auto;
 }
 
 .list-item {
-    min-width: 60%;
-    max-width: 250px;
-    margin: 5px 0;
-    padding: 15px;
-    font-size: 20px;
-    font-weight: 700;
-    color: var(--main-text-color);
-    text-align: center;
-    transition: all 0.2s ease-in-out;
-    cursor: pointer;
+	min-width: 60%;
+	max-width: 250px;
+	margin: 5px 0;
+	padding: 15px;
+	font-size: 20px;
+	font-weight: 700;
+	color: var(--main-text-color);
+	text-align: center;
+	transition: all 0.2s ease-in-out;
+	cursor: pointer;
 }
 
 .list-item:hover {
-    color: var(--strong-accent);
+	color: var(--strong-accent);
 }
 
 #list-controls {
-    display: grid;
-    grid-template-columns: 52px auto 40px;
-    align-items: center;
-    width: 100%;
-    border-bottom: 1px solid var(--main-bg-darker);
-    margin-bottom: 20px;
+	display: grid;
+	grid-template-columns: 52px auto 40px;
+	align-items: center;
+	width: 100%;
+	border-bottom: 1px solid var(--main-bg-darker);
+	margin-bottom: 20px;
 }
 
 #list-controls .btn {
-    margin-bottom: 0;
-    margin-left: auto;
-    max-width: min-content;
+	margin-bottom: 0;
+	margin-left: auto;
+	max-width: min-content;
 }
 
 #list-controls .btn:active {
-    transform: scale(0.8);
+	transform: scale(0.8);
 }
 
 #list-controls .btn:hover {
-    color: var(--strong-accent);
+	color: var(--strong-accent);
 }
 
 #list-controls #reverse {
@@ -52,98 +52,100 @@
 }
 
 #list-controls .filter{
-    grid-column: 2;
+	grid-column: 2;
 }
 
 #list-controls .back {
-    grid-column: 1;
-    width: max-content;
-    font-size: 24px;
-    padding: 10px 20px;
-    cursor: pointer;
+	grid-column: 1;
+	width: max-content;
+	font-size: 24px;
+	padding: 10px 20px;
+	cursor: pointer;
 }
 
 #list-controls .back:hover {
-    color: var(--strong-accent);
+	color: var(--strong-accent);
 }
 
 .filter {
-    display: flex;
-    flex-direction: row;
-    border-right: 1px solid var(--main-bg-darker);
-    padding-right: 10px;
+	display: flex;
+	flex-direction: row;
+	border-right: 1px solid var(--main-bg-darker);
+	padding-right: 10px;
 }
 
 .filter h2 {
-    margin-right: 15px;
-    border-right: 1px solid var(--main-bg-darker);
-    border-left: 1px solid var(--main-bg-darker);
-    padding: 0 10px;
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
+	margin-right: 15px;
+	border-right: 1px solid var(--main-bg-darker);
+	border-left: 1px solid var(--main-bg-darker);
+	padding: 0 10px;
+	cursor: pointer;
+	transition: all 0.2s ease-in-out;
 }
 
 .filter h2:hover {
-    color: var(--strong-accent);
+	color: var(--strong-accent);
 }
 
 .dropdown-filter {
-    width: 150px;
-    box-sizing: border-box;
+	width: 150px;
+	box-sizing: border-box;
 }
 
 .dropdown-button {
-    border: none;
-    box-sizing: border-box;
-    background-color: transparent;
-    font-size: 24px;
-    width: 100%;
-    transition: all 0.2s ease-in-out;
-    border-bottom: 1px solid var(--main-bg-darker);
+	border: none;
+	box-sizing: border-box;
+	background-color: transparent;
+	color: var(--main-text-color);
+	font-size: 24px;
+	width: 100%;
+	transition: all 0.2s ease-in-out;
+	border-bottom: 1px solid var(--main-bg-darker);
 }
 
 .dropdown-button i {
-    font-size: 14px;
-    margin-left: 3px;
+	font-size: 14px;
+	margin-left: 3px;
 }
 
 .dropdown-button:hover {
-    cursor: pointer;
-    border-bottom: 1px solid var(--strong-accent);
-    color: var(--strong-accent);
+	cursor: pointer;
+	border-bottom: 1px solid var(--strong-accent);
+	color: var(--strong-accent);
 }
 
 .dropdown-content {
-    z-index: 1;
-    list-style: none;
-    position: absolute;
-    font-size: 24px;
-    width: 150px;
-    box-sizing: border-box;
-    background-color: var(--main-bg-color);
-    border-left: 1px solid var(--main-bg-darker);
-    border-right: 1px solid var(--main-bg-darker);
-    border-bottom: 1px solid var(--main-bg-darker);
+	z-index: 1;
+	list-style: none;
+	position: absolute;
+	font-size: 24px;
+	width: 150px;
+	box-sizing: border-box;
+	background-color: var(--main-bg-color);
+	border-left: 1px solid var(--main-bg-darker);
+	border-right: 1px solid var(--main-bg-darker);
+	border-bottom: 1px solid var(--main-bg-darker);
 }
 
 .dropdown-content li {
-    padding: 10px;
-    transition: background-color 0.2s ease-in-out;
+	padding: 10px;
+	transition: background-color 0.2s ease-in-out;
+	border-bottom: 1px solid var(--main-bg-darker);
 }
 
 .dropdown-content li:hover {
-    background-color: var(--main-bg-darker);
-    cursor: pointer;
+	background-color: var(--main-bg-darker);
+	cursor: pointer;
 }
 
-.dropdown-content li:nth-child(even) {
-    border-bottom: 1px solid var(--main-bg-darker);
+.dropdown-content li:last-child {
+	border-bottom: none;
 }
 
 .dropdown-content li:first-child {
-    display: none;
+	display: none;
 }
 
 .dropdown-content.hidden {
-    display: none;
+	display: none;
 }

@@ -21,7 +21,7 @@ export class ClimatePanelComponent implements OnInit {
   ClimateAlter : ClimateObj = null;
   new_climate : boolean = false;
 
-  Climates : ClimateObj[] = []
+  Climates : ClimateObj[] = [];
   expandId : number = 0;
 
   ngOnInit(): void {
@@ -77,7 +77,7 @@ export class ClimatePanelComponent implements OnInit {
       },
       err => console.error(err),
       () => this.getClimates()
-    )
+    );
   }
 
   addTempClimate() {

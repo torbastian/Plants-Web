@@ -1,12 +1,12 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { PlantService, PlantImageService } from '../../services/plant.service';
+import { Component, OnInit } from '@angular/core';
+import { PlantService } from '../../services/plant.service';
 import { PlantObj } from '../../models/plant-model';
 
 import { ArticleService } from '../../services/article.service';
 import { ArticleObj } from '../../models/article-model';
 
 import { Location } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-article',
@@ -22,11 +22,11 @@ export class ArticleComponent implements OnInit {
   notFound: boolean = false;
 
   constructor(
-    private PlantImageService: PlantImageService,
     private PlantService: PlantService,
     private ArticleService: ArticleService,
     private route: ActivatedRoute,
-    private location: Location
+    private location: Location,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -42,12 +42,15 @@ export class ArticleComponent implements OnInit {
       data => {
         this.plant = <PlantObj>data;
       },
-      err => console.error(err),
+      err => {
+        console.log(err);
+        this.notFound = true;
+      },
       () => this.getArticleByPlantId()
     );
   }
 
-  getArticleByPlantId() {
+  getArticleByPlantId() {    
     this.ArticleService.getByPlantID(this.plantId).subscribe(
       data => {
         this.article = <ArticleObj>data;

@@ -1,13 +1,11 @@
 <div id="admin-panel" class="load-up">
     <div id="admin-navigation">
-        <ul>
-            <li class="tooltip link" data-text="Approve" [routerLink]="['approval', {id: '2'}]" routerLinkActive="active"><i class="fas fa-clipboard-check"></i></li>
-            <li class="tooltip link" data-text="Climates" [routerLink]="['climates']" routerLinkActive="active" ><i class="fas fa-cloud-sun-rain"></i></li>
-            <li class="tooltip link" data-text="Types" [routerLink]="['types']" routerLinkActive="active"><i class="fas fa-tree"></i></li>
-            <li class="tooltip link" data-text="Edible" [routerLink]="['edibles']" routerLinkActive="active"><i class="fas fa-utensils"></i></li>
-            <li class="tooltip link" data-text="Types"><i class="fas fa-tree"></i></li>
-            <li class="tooltip link" data-text="Types"><i class="fas fa-tree"></i></li>
-            <li class="tooltip link" data-text="Types"><i class="fas fa-tree"></i></li>
+        <ul class="link-list">
+            <li class="link" [routerLink]="['approval', {id: '2'}]" routerLinkActive="active"><i class="fas fa-clipboard-check"></i></li>
+            <li class="link" [routerLink]="['climates']" routerLinkActive="active" ><i class="fas fa-cloud-sun-rain"></i></li>
+            <li class="link" [routerLink]="['types']" routerLinkActive="active"><i class="fas fa-tree"></i></li>
+            <li class="link" [routerLink]="['edibles']" routerLinkActive="active"><i class="fas fa-utensils"></i></li>
+            <li class="link" ><i class="fas fa-tree"></i></li>
         </ul>
     </div>
     <div id="panel">

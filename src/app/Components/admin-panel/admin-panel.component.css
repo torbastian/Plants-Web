@@ -1,6 +1,8 @@
 #admin-navigation {
     display: flex;
     flex-direction: column;
+    max-width: 450px;
+    margin: auto;
     overflow-x: auto;
     overflow-y: hidden;
     padding: 10px 10px 0 10px;
@@ -14,8 +16,8 @@
 
 ::-webkit-scrollbar
 {
-    width: 8px;
-    height: 8px;
+    width: 6px;
+    height: 6px;
 }
 
 ::-webkit-scrollbar-thumb
@@ -23,17 +25,20 @@
 	background-color: vaR(--main-text-lighter);
 }
 
-#admin-navigation ul {
+.link-list {
     display: flex;
     flex-direction: row;
     list-style: none;
-    width: max-content;
+    width: 100%;
+    margin: auto;
 }
 
 .link {
     display: inline-block;
     text-align: center;
+    box-sizing: border-box;
     width: 50px;
+    min-width: 50px;
     padding: 10px;
     border-radius: 8px;
     border: 1px solid var(--main-bg-darker);
@@ -42,7 +47,6 @@
     cursor: pointer;
     transition: all 0.2s ease-in-out;
     margin-bottom: 10px;
-    box-sizing: border-box;
 }
 
 .link:hover {

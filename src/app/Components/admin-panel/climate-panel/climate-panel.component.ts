@@ -11,7 +11,9 @@ import { load_up } from '../../../animations/load-up.animation';
   animations: [load_up]
 })
 export class ClimatePanelComponent implements OnInit {
-
+  /**
+   * The climate panel is responsible for updating and creating climates in the database
+   */
   constructor(private ClimateService: ClimateService) { }
 
   ClimateFormChange = new FormGroup({
@@ -29,6 +31,9 @@ export class ClimatePanelComponent implements OnInit {
   }
 
   getClimates() {
+    /**
+     * Get all Climates
+     */
     this.ClimateService.get().subscribe(
       data => {
         this.Climates = <ClimateObj[]>data;
@@ -38,6 +43,9 @@ export class ClimatePanelComponent implements OnInit {
   }
 
   setExpand(id : number) {
+    /**
+     * Set the expand id and reset the form
+     */
     if (id == 0 && this.new_climate) {
       this.Climates.pop();
       this.new_climate = false;
@@ -47,10 +55,17 @@ export class ClimatePanelComponent implements OnInit {
   }
 
   updateClimate() {
+    /**
+     * If the climate is new, create a new climate instead
+     */
     if (this.new_climate) {
       this.newClimate();
       return;
     }
+
+    /**
+     * Update a climate with the information provided in the form
+     */
 
     let id = this.expandId;
     let _climate = new ClimateObj();
@@ -67,6 +82,9 @@ export class ClimatePanelComponent implements OnInit {
   }
 
   newClimate() {
+    /**
+     * Create a new climate object, and push it to the database
+     */
     let _climate = new ClimateObj();
     _climate.info = this.ClimateFormChange.value.ClimateName;
 
@@ -81,6 +99,9 @@ export class ClimatePanelComponent implements OnInit {
   }
 
   addTempClimate() {
+    /**
+     * Add a temporary new container for a new climate, and expand it (make it editable)
+     */
     this.new_climate = true;
     let _climate = new ClimateObj();
     _climate.id = this.Climates[this.Climates.length - 1].id + 1;

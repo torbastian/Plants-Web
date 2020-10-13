@@ -47,6 +47,7 @@ export class ArticleCreatorComponent implements OnInit {
   }
 
   post() {
+    /* update the image of the plant */
     let id = this.ArticleForm.value.PlantID;
     let iPlant = new ImagePlant();
     iPlant.image = this.base64image;

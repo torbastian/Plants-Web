@@ -18,6 +18,7 @@ export class HomeComponent implements OnInit {
   }
 
   getLatestPlant() {
+    /* Get the latest plant entry in the database to display on the front page */
     this.PlantService.getLatest().subscribe(
       data => {
         this.plant = <PlantObj>data;

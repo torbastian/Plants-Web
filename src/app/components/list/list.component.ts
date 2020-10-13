@@ -35,6 +35,7 @@ export class ListComponent implements OnInit {
   filterInfo: any[] = [];
 
   ngOnInit(): void {
+    // Get the type filter and id from the router parameters
     this.route.paramMap.subscribe(paramMap => {
       this.listType = paramMap.get('type');
       this.filter = paramMap.get('filter');
@@ -44,8 +45,10 @@ export class ListComponent implements OnInit {
   }
 
   getList() {
+    // Get list of objects based on the route parameters
     this.dropDownHidden = true;
 
+    //If objects already exist in the list, empty it
     if (this.Objects.length > 0) {
       this.Objects = [];
       this.reverse = false;
@@ -99,8 +102,8 @@ export class ListComponent implements OnInit {
   }
 
   getAllClimates(onlyFilter: boolean = false) {
-    //Få fat i alle clima, gem dem i filterinfo,
-    //Hvis onlyFitler er false, gem dem i objects
+    //Get all climates, save them in filterInfo
+    //If onlyFilter is false, save them in objects
     this.ClimateService.get().subscribe(
       data => {
         let objects = <ClimateObj[]>data;
@@ -119,8 +122,8 @@ export class ListComponent implements OnInit {
   }
 
   getAllPlantTypes(onlyFilter: boolean = false) {
-    //Få fat i alle plante typer, gem dem i filterinfo,
-    //Hvis onlyFitler er false, gem dem i objects
+    // GEt all plant types, save them in filterInfo
+    //If onlyFilter is false, save them in objects
     this.PlantTypesService.get().subscribe(
       data => {
         let objects = <PlantTypeObj[]>data;
@@ -188,11 +191,13 @@ export class ListComponent implements OnInit {
   //2nd GetNClimates(5, 5)
 
   reverseOrder() {
+    //Reverse the order of the list
     this.Objects = this.Objects.reverse();
     this.reverse = !this.reverse;
   }
 
   goBack() {
+    // Go back one step in the users history
     this.location.back();
   }
 }

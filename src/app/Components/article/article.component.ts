@@ -30,6 +30,7 @@ export class ArticleComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    /* Get the ID in the route paramaters and get the plant based on the ID */
     this.route.params.subscribe(params => {
       this.plantId = <number>params["id"];
     })
@@ -38,6 +39,7 @@ export class ArticleComponent implements OnInit {
   }
   
   getPlant() {
+    /* Get plant based on plantId */
     this.PlantService.getById(this.plantId).subscribe(
       data => {
         this.plant = <PlantObj>data;
@@ -50,7 +52,8 @@ export class ArticleComponent implements OnInit {
     );
   }
 
-  getArticleByPlantId() {    
+  getArticleByPlantId() {
+    /* Get the article based on the plant id */    
     this.ArticleService.getByPlantID(this.plantId).subscribe(
       data => {
         this.article = <ArticleObj>data;
@@ -66,6 +69,7 @@ export class ArticleComponent implements OnInit {
   }
 
   goBack() {
+    /* Go back in the users browsing history */
     this.location.back();
   }
 }

@@ -14,7 +14,10 @@ import { ActivatedRoute } from '@angular/router';
   animations: [load_up]
 })
 export class ApprovalComponent implements OnInit {
-
+  /**
+   * The approval panel is where the admin approves and denies incoming plants 
+   * and their articles
+   */
   constructor(
     private ApprovedTypesService: ApprovedTypesService,
     private PlantService: PlantService,
@@ -27,6 +30,9 @@ export class ApprovalComponent implements OnInit {
   currentType: string = '';
 
   ngOnInit(): void {
+    /* Get the router paramater, which contains the id, 
+    and get all plants based on their approved type
+    if the ID is 1, make it 2, 1 is an already approved plant */
     this.route.params.subscribe(params => {
       this.currentTypeId = <number>params["id"];
       if (this.currentTypeId == null || this.currentTypeId == 1) {
@@ -41,6 +47,7 @@ export class ApprovalComponent implements OnInit {
   }
 
   getApprovedTypes() {
+    /* Get all approved types */
     this.ApprovedTypesService.get().subscribe(
       data => {
         this.approvedTypes = <ApprovedObj[]>data;
@@ -51,6 +58,7 @@ export class ApprovalComponent implements OnInit {
   }
 
   setCurrentType() {
+    /* Set the current approved type if found */
     if (this.approvedTypes != []) {
       let aObj = this.approvedTypes.find(a => a.id == this.currentTypeId);
       if (aObj != undefined) {
@@ -60,6 +68,7 @@ export class ApprovalComponent implements OnInit {
   }
 
   getPlantsByApprovedType(approvalType: number) {
+    /* Get plans from the database based on their approval type */
     this.currentTypeId = approvalType;
     this.PlantService.getApproval(approvalType).subscribe(
       data => {
@@ -71,6 +80,7 @@ export class ApprovalComponent implements OnInit {
   }
 
   setApproval(id: number, approvalType: number) {
+    /* Set the approval type for a plant */
     this.PlantService.setApproveType(id, approvalType).subscribe(
       data => {
 
@@ -81,6 +91,7 @@ export class ApprovalComponent implements OnInit {
   }
 
   delete(id : number) {
+    /* Delete a plant based on ID */
     this.PlantService.delete(id).subscribe(
       data => {
         console.log(data);

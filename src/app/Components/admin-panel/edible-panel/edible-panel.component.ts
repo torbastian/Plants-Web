@@ -12,7 +12,9 @@ import { EdibleService } from '../../../services/edible.service';
   animations: [load_up]
 })
 export class EdiblePanelComponent implements OnInit {
-  
+  /**
+   * The edible panel is responsible for updating and creating edible values in the database
+   */
   constructor(private EdibleService: EdibleService) { }
 
   EdibleFormChange = new FormGroup({
@@ -30,6 +32,9 @@ export class EdiblePanelComponent implements OnInit {
   }
 
   getEdibles() {
+    /**
+     * Get all Edible values
+     */
     this.EdibleService.get().subscribe(
       data => {
         this.Edibles = <EdibleObj[]>data;
@@ -39,6 +44,9 @@ export class EdiblePanelComponent implements OnInit {
   }
 
   setExpand(id : number) {
+    /**
+     * Set the expand id and reset the form
+     */
     if (id == 0 && this.new_Edible) {
       this.Edibles.pop();
       this.new_Edible = false;
@@ -48,11 +56,17 @@ export class EdiblePanelComponent implements OnInit {
   }
 
   updateEdible() {
+    /**
+     * If the edible value is new, create a new edible value instead
+     */
     if (this.new_Edible) {
       this.newEdible();
       return;
     }
 
+    /**
+     * Update an edible value with the information provided in the form
+     */
     let id = this.expandId;
     let _Edible = new EdibleObj();
     _Edible.id = id;
@@ -68,6 +82,9 @@ export class EdiblePanelComponent implements OnInit {
   }
 
   newEdible() {
+    /**
+     * Create a new climate object, and push it to the database
+     */
     let _Edible = new EdibleObj();
     _Edible.info = this.EdibleFormChange.value.EdibleName;
 
@@ -82,6 +99,9 @@ export class EdiblePanelComponent implements OnInit {
   }
 
   addTempEdible() {
+    /**
+     * Add a temporary new container for a new edible value, and expand it (make it editable)
+     */
     this.new_Edible = true;
     let _Edible = new EdibleObj();
     _Edible.id = this.Edibles[this.Edibles.length - 1].id + 1;

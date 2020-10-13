@@ -23,6 +23,7 @@ export class CommentsComponent implements OnInit {
   }
 
   getComments() {
+    /* Get all comments belonging to an article */
     this.CommentService.getByArticleId(this.ArticleID).subscribe(
       data => {
         this.comments = <CommentObj[]>data;

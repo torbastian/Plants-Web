@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 })
 export class PlantComponent implements OnInit {
   @Input() plant: PlantObj;
+  // ^ The plant is provided as input
 
   constructor(
     protected PlantImageService: PlantImageService,
@@ -18,6 +19,8 @@ export class PlantComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    // Get the image based on the plant ID,
+    // Decide what information to display based on the URL
     this.getImage(this.plant.id);
     if (this.router.url.includes('/Article')) {
       this.showInfo = true;
@@ -49,10 +52,12 @@ export class PlantComponent implements OnInit {
   }
 
   gotoArticle() {
+    // Navigate the user to the article pointing to this plant
    this.router.navigate(['Article/' + this.plant.id]);
   }
 
   onLoad() {
+    //When image has finished loading, set it to false
     this.loading = false;
   }
 }

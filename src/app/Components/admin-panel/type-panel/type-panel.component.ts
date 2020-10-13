@@ -11,7 +11,9 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   animations: [load_up]
 })
 export class TypePanelComponent implements OnInit {
-
+  /**
+   * The type panel is responsible for updating and creating types in the database
+   */
   constructor(private TypeService: PlantTypesService) { }
 
   TypeFormChange = new FormGroup({
@@ -29,6 +31,9 @@ export class TypePanelComponent implements OnInit {
   }
 
   getTypes() {
+    /**
+     * Get all types
+     */
     this.TypeService.get().subscribe(
       data => {
         this.Types = <PlantTypeObj[]>data;
@@ -38,6 +43,9 @@ export class TypePanelComponent implements OnInit {
   }
 
   setExpand(id : number) {
+    /**
+     * Set the expand id and reset the form
+     */
     if (id == 0 && this.new_type) {
       this.Types.pop();
       this.new_type = false;
@@ -47,11 +55,17 @@ export class TypePanelComponent implements OnInit {
   }
 
   updateType() {
+    /**
+     * If the type is new, create a new type instead
+     */
     if (this.new_type) {
       this.newType();
       return;
     }
 
+    /**
+     * Update a type with the information provided in the form
+     */
     let id = this.expandId;
     let _type = new PlantTypeObj();
     _type.id = id;
@@ -67,6 +81,9 @@ export class TypePanelComponent implements OnInit {
   }
 
   newType() {
+    /**
+     * Create a new type object, and push it to the database
+     */
     let _type = new PlantTypeObj();
     _type.info = this.TypeFormChange.value.TypeName;
 
@@ -81,6 +98,9 @@ export class TypePanelComponent implements OnInit {
   }
 
   addTempType() {
+    /**
+     * Add a temporary new container for a new type, and expand it (make it editable)
+     */
     this.new_type = true;
     let _type = new PlantTypeObj();
     _type.id = this.Types[this.Types.length - 1].id + 1;

@@ -1,0 +1,53 @@
+#user-panel {
+    max-width: 450px;
+    margin: auto;
+}
+
+.panel ul {
+    list-style: none;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--main-bg-darker);
+}
+
+.panel ul li {
+    font-family: 'Roboto', sans-serif;
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.panel .username {
+    font-weight: bold;
+}
+
+.panel .id {
+    color: var(--main-text-lighter);
+}
+
+.mini-plant {
+    margin-bottom: 10px;
+}
+
+section h2 {
+    margin: 10px 0;
+}
+
+p.a-type {
+    margin: 10px;
+    padding: 10px;
+    border-radius: 4px;
+    font-family: 'Rubik', sans-serif;
+    color: var(--main-bg-color);
+}
+
+p.Approved {
+    background-color: var(--strong-accent);
+}
+
+p.Pending {
+    background-color: #115fe2;
+}
+
+p.Denied {
+    background-color: #e71c1c;
+}

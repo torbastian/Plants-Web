@@ -12,7 +12,7 @@
             <form *ngIf="expandId == Type.id" class="admin-list-item-content"
             [formGroup]="TypeFormChange" (ngSubmit)="updateType()">
             <button class="exit btn" (click)="setExpand(0)"><i class="fas fa-times"></i></button>
-            <input type="text" formControlName="TypeName" [placeholder]="Type.info">
+            <input #edit type="text" formControlName="TypeName" [placeholder]="Type.info">
             <button class="btn submit-button" type="submit" [disabled]="!TypeFormChange.valid"><i class="fas fa-check"></i></button>
         </form>
     </div>

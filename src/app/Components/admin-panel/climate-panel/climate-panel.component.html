@@ -12,7 +12,7 @@
             <form *ngIf="expandId == climate.id" class="admin-list-item-content"
             [formGroup]="ClimateFormChange" (ngSubmit)="updateClimate()">
             <button class="exit btn" (click)="setExpand(0)"><i class="fas fa-times"></i></button>
-            <input type="text" formControlName="ClimateName" [placeholder]="climate.info">
+            <input #edit type="text" formControlName="ClimateName" [placeholder]="climate.info">
             <button class="btn submit-button" type="submit" [disabled]="!ClimateFormChange.valid"><i class="fas fa-check"></i></button>
         </form>
     </div>

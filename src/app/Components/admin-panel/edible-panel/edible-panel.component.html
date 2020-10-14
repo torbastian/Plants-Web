@@ -12,7 +12,7 @@
             <form *ngIf="expandId == Edible.id" class="admin-list-item-content"
             [formGroup]="EdibleFormChange" (ngSubmit)="updateEdible()">
             <button class="exit btn" (click)="setExpand(0)"><i class="fas fa-times"></i></button>
-            <input Edible="text" formControlName="EdibleName" [placeholder]="Edible.info">
+            <input #edit type="text" formControlName="EdibleName" [placeholder]="Edible.info">
             <button class="btn submit-button" Edible="submit" [disabled]="!EdibleFormChange.valid"><i class="fas fa-check"></i></button>
         </form>
     </div>

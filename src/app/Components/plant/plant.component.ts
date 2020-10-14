@@ -26,7 +26,7 @@ export class PlantComponent implements OnInit {
       this.showInfo = true;
     }
 
-    if (this.router.url.includes('/Admin')) {
+    if (this.router.url.includes('/Admin') || this.router.url.includes('/Account')) {
       this.showInfo = true;
       this.minify = true;
     }

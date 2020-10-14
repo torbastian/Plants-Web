@@ -27,6 +27,10 @@ export class PlantService extends CrudService<PlantObj, number> {
      return this._http.get<PlantObj>(this._base + '/latest');
    }
 
+   getByUserId(id: number): Observable <PlantObj[]> {
+     return this._http.get<PlantObj[]>(this._base + '/user/' + id);
+   }
+
    getApproval(approvalType: number): Observable <PlantObj[]> {
      return this._http.get<PlantObj[]>(this._base + '/approval/' + approvalType);
    }

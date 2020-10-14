@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { PlantTypesService} from '../../../services/plant-types.service';
 import { PlantTypeObj } from '../../../models/plant-type-model';
 import { load_up } from '../../../animations/load-up.animation';
@@ -11,6 +11,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   animations: [load_up]
 })
 export class TypePanelComponent implements OnInit {
+  @ViewChild("edit") editElemet: ElementRef;
   /**
    * The type panel is responsible for updating and creating types in the database
    */
@@ -52,6 +53,13 @@ export class TypePanelComponent implements OnInit {
     }
     this.TypeFormChange.reset();
     this.expandId = id;
+
+    //Give the above code time to take effect
+    setTimeout(() => {
+      if (this.editElemet != undefined) {
+        this.editElemet.nativeElement.focus();
+      }
+    }, 0)
   }
 
   updateType() {

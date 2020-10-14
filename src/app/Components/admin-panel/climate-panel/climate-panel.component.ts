@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ClimateService } from '../../../services/climate.service';
 import { ClimateObj } from '../../../models/climate-model';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -11,6 +11,7 @@ import { load_up } from '../../../animations/load-up.animation';
   animations: [load_up]
 })
 export class ClimatePanelComponent implements OnInit {
+  @ViewChild("edit") editElemet: ElementRef;
   /**
    * The climate panel is responsible for updating and creating climates in the database
    */
@@ -20,11 +21,11 @@ export class ClimatePanelComponent implements OnInit {
     ClimateName: new FormControl('', Validators.required)
   });
 
-  ClimateAlter : ClimateObj = null;
-  new_climate : boolean = false;
+  ClimateAlter: ClimateObj = null;
+  new_climate: boolean = false;
 
-  Climates : ClimateObj[] = [];
-  expandId : number = 0;
+  Climates: ClimateObj[] = [];
+  expandId: number = 0;
 
   ngOnInit(): void {
     this.getClimates();
@@ -42,7 +43,7 @@ export class ClimatePanelComponent implements OnInit {
     )
   }
 
-  setExpand(id : number) {
+  setExpand(id: number) {
     /**
      * Set the expand id and reset the form
      */
@@ -52,6 +53,13 @@ export class ClimatePanelComponent implements OnInit {
     }
     this.ClimateFormChange.reset();
     this.expandId = id;
+
+    //Give the above code time to take effect
+    setTimeout(() => {
+      if (this.editElemet != undefined) {
+        this.editElemet.nativeElement.focus();
+      }
+    }, 0)
   }
 
   updateClimate() {

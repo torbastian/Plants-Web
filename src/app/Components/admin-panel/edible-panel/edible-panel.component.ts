@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { EdibleObj } from '../../../models/edible-model';
 import { load_up } from '../../../animations/load-up.animation';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -12,6 +12,7 @@ import { EdibleService } from '../../../services/edible.service';
   animations: [load_up]
 })
 export class EdiblePanelComponent implements OnInit {
+  @ViewChild("edit") editElemet: ElementRef;
   /**
    * The edible panel is responsible for updating and creating edible values in the database
    */
@@ -53,6 +54,12 @@ export class EdiblePanelComponent implements OnInit {
     }
     this.EdibleFormChange.reset();
     this.expandId = id;
+
+    setTimeout(() => {
+      if (this.editElemet != undefined) {
+        this.editElemet.nativeElement.focus();
+      }
+    }, 0)
   }
 
   updateEdible() {

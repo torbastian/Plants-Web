@@ -1,3 +1,19 @@
-<div class="load-in">
-    <p>This page should show the account information</p>
+<div id="user-panel" class="load-in">
+    <h1>User Panel</h1>
+    
+    <div class="panel">
+        <ul>
+            <li class="username tooltip" [attr.data-text]="'username'">{{currentUser.username}}</li>
+            <li class="id tooltip" [attr.data-text]="'id'">#{{currentUser.id}}</li>
+        </ul>
+        <section [@listAnimation]="plants.length">
+            <h2>My plants & Articles</h2>
+            <div class="mini-plant border" *ngFor="let plant of plants">
+                <app-plant [plant]="plant"></app-plant>
+            <p class="a-type" [ngClass]="{'Approved' : plant.approved == 'Approved',
+                              'Pending' : plant.approved == 'Pending',
+                              'Denied' : plant.approved == 'Denied'}">{{plant.approved}}</p>
+            </div>
+        </section>
+    </div>
 </div>

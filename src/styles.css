@@ -5,7 +5,7 @@
     --main-text-lighter: #5c5c5c;
     --main-bg-color: #FFF;
     --main-bg-darker: #cfcfcf;
-    --strong-accent: #34AF6E;
+    --strong-accent: #108647;
     --submit: #06f;
     --submit-hover: #0358d8;
     --submit-active: #3887ff;
@@ -236,6 +236,8 @@ body {
     width: max-content;
     text-align: center;
     pointer-events: none;
+    font-family: 'Rubik', sans-serif;
+    font-weight: 500;
     background: var(--main-bg-darker);
     color: var(--main-text-lighter);
     font-size: 14px;

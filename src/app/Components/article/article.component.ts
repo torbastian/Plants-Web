@@ -34,7 +34,6 @@ export class ArticleComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.plantId = <number>params["id"];
     })
-
     this.getPlant();
   }
   

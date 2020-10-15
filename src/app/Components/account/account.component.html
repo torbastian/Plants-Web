@@ -5,9 +5,10 @@
         <ul>
             <li class="username tooltip" [attr.data-text]="'username'">{{currentUser.username}}</li>
             <li class="id tooltip" [attr.data-text]="'id'">#{{currentUser.id}}</li>
+            <li><button class="btn border" (click)="logout()">Logout</button></li>
         </ul>
         <section [@listAnimation]="plants.length">
-            <h2>My plants & Articles</h2>
+            <h2>Your Plants & Articles</h2>
             <div class="mini-plant border" *ngFor="let plant of plants">
                 <app-plant [plant]="plant"></app-plant>
             <p class="a-type" [ngClass]="{'Approved' : plant.approved == 'Approved',

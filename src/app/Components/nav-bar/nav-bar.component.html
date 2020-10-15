@@ -17,9 +17,9 @@
         </ul>
         <input class="searchbar" type="text" placeholder="Search.." />
         <!-- Combine Account and login, login needs to be shown when user is not logged in, account is shown when the user is logged in -->
-        <a class="headerboxes" (click)="active = false" [routerLink]="['Account' ]"
+        <a class="headerboxes" *ngIf="loggedIn" (click)="active = false" [routerLink]="['Account' ]"
           routerLinkActive="active">Account</a>
-        <a class="headerboxes" (click)="active = false" [routerLink]="['Account/Login']"
+        <a class="headerboxes" *ngIf="!loggedIn" (click)="active = false" [routerLink]="['Account/Login']"
           routerLinkActive="active">Login</a>
         <a class="headerboxes" (click)="active = false" [routerLink]="['Article-Creator' ]"
           routerLinkActive="active">Article Creator TEMP</a>

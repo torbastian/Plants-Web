@@ -12,8 +12,6 @@
     --negative: #fc1d2f;
     --negative-hover: #ce1827;
     --negative-active: #f73545;
-    --input-shade-1: #f9f9f9;
-    --input-shade-2: #cecdcd;
     --shadow: #555555;
 }
 
@@ -181,7 +179,7 @@ body {
 .submit-button {
     background-color: var(--submit);
     color: white;
-    border: none;
+    border: 1px solid transparent;
 }
 
 .submit-button:hover:enabled {

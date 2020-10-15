@@ -1,5 +1,9 @@
 <div class="comment-container">
     <h3 class="comment-title">Comments</h3>
+    <form [formGroup]="CommentForm" *ngIf="loggedIn" class="comment" (ngSubmit)="postComment()">
+        <textarea formControlName="CommentBox" type="text" maxlength="450" placeholder="Write a comment"></textarea>
+        <button [ngClass]="{'secondary' : !CommentForm.valid}" class="btn submit-button" [disabled]="!CommentForm.valid">Submit</button>
+    </form>
     <div class="comment" *ngFor="let comment of comments">
         <h1 class="username">{{comment.username}}</h1>
         <p class="comment-content">{{comment.info}}</p>

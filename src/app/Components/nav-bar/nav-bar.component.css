@@ -104,7 +104,7 @@ nav button:hover {
 .searchbar {
     color: var(--main-text-color);
     border: none;
-    margin: 0 10px;
+    margin: 10px;
     max-width: 250px;
     border-bottom: 1px solid var(--main-bg-darker);
 }

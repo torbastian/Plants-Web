@@ -25,4 +25,13 @@ export class CommentService extends CrudService<CommentObj, number>{
      //Override, this is not implimented to work with the controller
      return null;
    }
+
+   create() {
+     //Overide, this is not implimented to work with the controller
+     return null;
+   }
+
+   postNewComment(userId: number, articleId: number, comment: CommentObj) {
+     return this._http.post<CommentObj>(this._base + '/' + userId + '/' + articleId, comment);
+   }
 }

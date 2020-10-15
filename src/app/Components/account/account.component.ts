@@ -48,4 +48,8 @@ export class AccountComponent implements OnInit {
     }
   }
 
+  logout() {
+    this.accountService.logout();
+    this.router.navigate(['Account/Login']);
+  }
 }

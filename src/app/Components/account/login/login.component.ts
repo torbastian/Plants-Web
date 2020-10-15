@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { AccountService } from '../../../services/account.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,10 @@ export class LoginComponent implements OnInit, AfterViewInit {
     Username: new FormControl("", Validators.required),
     Password: new FormControl("", Validators.required)
   })
-  constructor(private accountService: AccountService) { }
+  constructor(
+    private accountService: AccountService,
+    private router: Router
+    ) { }
 
   userNotFound: boolean = false;
   isLoggedIn: boolean = false;
@@ -40,7 +44,9 @@ export class LoginComponent implements OnInit, AfterViewInit {
       }, err => {
         this.userNotFound = true;
         console.error(err);
-      });
+      },
+      () => this.navigateUser()
+    );
   }
 
   getCurrentUser() {
@@ -48,5 +54,9 @@ export class LoginComponent implements OnInit, AfterViewInit {
       this.isLoggedIn = true;
       console.log(this.accountService.userValue);
     }
+  }
+
+  navigateUser() {
+    this.router.navigate(['Home']);
   }
 }

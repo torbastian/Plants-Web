@@ -4,6 +4,8 @@
 }
 
 .comment {
+    display: flex;
+    flex-direction: column;
     padding: 10px 0;
     margin: 10px 0;
 }
@@ -20,4 +22,29 @@
 
 .comment:hover .comment-content{
     border-bottom: 1px solid var(--main-text-color);
+}
+
+.comment textarea {
+    padding: 10px;
+    font-size: 18px;
+    width: 100%;
+    border: none;
+    resize: none;
+    height: 50px;
+    box-sizing: border-box;
+    border-bottom: 1px solid var(--main-bg-darker);
+    transition: height 0.2s ease-in-out;
+}
+
+.comment textarea:hover {
+    border-bottom: 1px solid var(--main-text-color);
+}
+
+.comment textarea:focus {
+    height: 200px;
+}
+
+.comment .btn {
+    margin-top: 10px;
+    margin-left: auto;
 }

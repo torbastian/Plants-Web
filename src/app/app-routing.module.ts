@@ -8,6 +8,15 @@ import { AccountComponent } from './components/account/account.component';
 import { LoginComponent } from './components/account/login/login.component';
 import { ArticleCreatorComponent } from './components/article-creator/article-creator.component';
 import {PlantCreateComponent} from './Components/plant-create/plant-create.component';
+import { ArticleComponent } from './components/article/article.component';
+import { AdminPanelComponent } from './components/admin-panel/admin-panel.component';
+import { ApprovalComponent } from './components/admin-panel/approval/approval.component';
+import { ClimatePanelComponent } from './components/admin-panel/climate-panel/climate-panel.component';
+import { TypePanelComponent } from './components/admin-panel/type-panel/type-panel.component';
+import { EdiblePanelComponent } from './components/admin-panel/edible-panel/edible-panel.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+
+import { AuthGuard } from './helpers/auth.guard';
 
 const routes: Routes = [
   {path:'About', component: AboutComponent},
@@ -15,10 +24,20 @@ const routes: Routes = [
   {path:'List', component: ListComponent},
   {path:'Home', component: HomeComponent},
   {path:'Article-Creator', component: ArticleCreatorComponent},
-  {path:'Account', component: AccountComponent},
+  {path:'Account', component: AccountComponent, canActivate: [AuthGuard]},
   {path: 'Account/Login', component: LoginComponent},
   {path: '', redirectTo: '/Home', pathMatch: 'full'},
-  {path:'Plant-create', component: PlantCreateComponent}
+  {path:'Plant-create', component: PlantCreateComponent},
+  {path: 'Article/:id', component: ArticleComponent},
+  {path: 'Admin', component: AdminPanelComponent, canActivate: [AuthGuard], children: [
+    {path: '', redirectTo: 'approval', pathMatch: 'full'},
+    {path: 'approval', component: ApprovalComponent},
+    {path: 'climates', component: ClimatePanelComponent},
+    {path: 'types', component: TypePanelComponent},
+    {path: 'edibles', component: EdiblePanelComponent}
+  ]},
+  {path: '', redirectTo: '/Home', pathMatch: 'full'},
+  {path: '**', component: PageNotFoundComponent}
 ];
 
 @NgModule({

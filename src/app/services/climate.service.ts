@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
-import { CrudService } from './crud-service.service'
+import { HttpClient } from '@angular/common/http';
+import { CrudService } from './crud-service.service';
 import { ClimateObj } from '../models/climate-model';
 
 import { environment } from '../../environments/environment';

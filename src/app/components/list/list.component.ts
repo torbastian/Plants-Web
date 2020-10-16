@@ -1,30 +1,19 @@
-import { Component, OnInit, NgModule, HostBinding, Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ClimateObj } from '../../models/climate-model';
 import { ClimateService } from '../../services/climate.service';
 import { PlantObj } from '../../models/plant-model'
 import { PlantService } from '../../services/plant.service';
-import { CrudService } from 'src/app/services/crud-service.service';
 import { PlantTypesService } from 'src/app/services/plant-types.service';
 import { PlantTypeObj } from 'src/app/models/plant-type-model';
-import { trigger, transition, style, animate, query, stagger } from '@angular/animations';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
+import { load_up } from '../../animations/load-up.animation';
 
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.css'],
-  animations: [
-    trigger('listAnimation', [
-      transition('* => *', [
-        query(':enter', [
-          style({ opacity: 0, transform: 'translateY(30px)' }),
-          stagger(90, [
-            animate('0.5s ease-out', style({ opacity: 1, transform: 'none' }))
-          ])
-        ], { optional: true })
-      ])
-    ])
-  ]
+  animations: [load_up]
 })
 export class ListComponent implements OnInit {
   @Input() listType?: string;
@@ -33,51 +22,122 @@ export class ListComponent implements OnInit {
     private ClimateService: ClimateService,
     private PlantService: PlantService,
     private PlantTypesService: PlantTypesService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private location: Location
   ) { }
 
   Objects: any[] = [];
   reverse: boolean = false;
+  filter: string;
+  filterID: number;
+  dropDownHidden: boolean = true;
+
+  filterInfo: any[] = [];
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe( paramMap => {
+    // Get the type filter and id from the router parameters
+    this.route.paramMap.subscribe(paramMap => {
       this.listType = paramMap.get('type');
+      this.filter = paramMap.get('filter');
+      this.filterID = parseInt(paramMap.get('id'));
       this.getList();
     });
   }
 
   getList() {
+    // Get list of objects based on the route parameters
+    this.dropDownHidden = true;
+
+    //If objects already exist in the list, empty it
     if (this.Objects.length > 0) {
       this.Objects = [];
       this.reverse = false;
     }
 
-    switch (this.listType) {
-      case 'climates':
-        this.getAllClimates();
-        break;
+    if (this.filter == null) {
+      //If no filter is specified, get by listytype
+      switch (this.listType) {
+        case 'climates':
+          this.getAllClimates();
+          break;
 
-      case 'plants':
-        this.getAllPlants();
-        break;
+        case 'plants':
+          this.getAllPlants();
+          break;
 
-      case 'types':
-        this.getAllPlantTypes();
-        break;
+        case 'types':
+          this.getAllPlantTypes();
+          break;
 
-      default:
-        this.getAllPlants();
-        this.listType = 'plants';
-        break;
+        default:
+          this.getAllPlants();
+          this.listType = 'plants';
+          break;
+      }
+    }
+    else {
+      //If filter is specified, get plants filter & filterID
+      switch (this.filter) {
+        case 'climates':
+          this.getPlantsByClimate(this.filterID);
+          if (this.filterInfo.length == 0)
+            this.getAllClimates(true);
+          else
+            this.changeFilterInfo();
+          break;
+
+        case 'types':
+          this.getPlantsByType(this.filterID);
+          if (this.filterInfo.length == 0)
+            this.getAllPlantTypes(true);
+          else
+            this.changeFilterInfo();
+          break;
+
+        default:
+          this.getAllPlants();
+          break;
+      }
     }
   }
 
-  getAllClimates() {
+  getAllClimates(onlyFilter: boolean = false) {
+    //Get all climates, save them in filterInfo
+    //If onlyFilter is false, save them in objects
     this.ClimateService.get().subscribe(
       data => {
-        this.Objects = <ClimateObj[]>data;
+        let objects = <ClimateObj[]>data;
+
+        this.filterInfo = objects;
+
+        if (!onlyFilter) {
+          //This is done so that filterInfo and 
+          //Objects dont point to the same data
+          this.Objects = [...objects];
+        }
       },
-      err => console.error(err)
+      err => console.error(err),
+      () => this.changeFilterInfo()
+    );
+  }
+
+  getAllPlantTypes(onlyFilter: boolean = false) {
+    // GEt all plant types, save them in filterInfo
+    //If onlyFilter is false, save them in objects
+    this.PlantTypesService.get().subscribe(
+      data => {
+        let objects = <PlantTypeObj[]>data;
+
+        this.filterInfo = objects;
+
+        if (!onlyFilter) {
+          //This is done so that filterInfo and 
+          //Objects dont point to the same data
+          this.Objects = [...objects];
+        }
+      },
+      err => console.error(err),
+      () => this.changeFilterInfo()
     );
   }
 
@@ -90,13 +150,37 @@ export class ListComponent implements OnInit {
     );
   }
 
-  getAllPlantTypes() {
-    this.PlantTypesService.get().subscribe(
+  getPlantsByType(id: number) {
+    this.PlantService.getByTypeId(id).subscribe(
       data => {
-        this.Objects = <PlantTypeObj[]>data;
+        this.Objects = <PlantObj[]>data;
       },
       err => console.error(err)
     );
+  }
+
+  getPlantsByClimate(id: number) {
+    this.PlantService.getByClimateId(id).subscribe(
+      data => {
+        this.Objects = <PlantObj[]>data;
+      },
+      err => console.error(err)
+    );
+  }
+
+  changeFilterInfo() {
+    //Get the item with maching id of filterID and put it on the first index
+    let x = this.filterInfo.findIndex(e => e.id == this.filterID);
+    let item = this.filterInfo.splice(x, 1)[0];
+    this.filterInfo.unshift(item);
+    this.sortFilterInfo();
+  }
+
+  sortFilterInfo() {
+    //Store the first item of the array, sort the rest then put it back
+    let firstItem = this.filterInfo.shift();
+    this.filterInfo.sort((a, b) => a.info.localeCompare(b.info));
+    this.filterInfo.unshift(firstItem);
   }
 
   //todo: Get x Items from API, when called again, get x Items
@@ -107,7 +191,13 @@ export class ListComponent implements OnInit {
   //2nd GetNClimates(5, 5)
 
   reverseOrder() {
+    //Reverse the order of the list
     this.Objects = this.Objects.reverse();
     this.reverse = !this.reverse;
-   }
+  }
+
+  goBack() {
+    // Go back one step in the users history
+    this.location.back();
+  }
 }

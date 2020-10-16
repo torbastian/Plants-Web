@@ -1,3 +1,21 @@
-<div class="load-in">
-    <p>This is where the user performs a login</p>
+<div id="login" class="load-in">
+    <div *ngIf="userNotFound" id="error">
+        <p>Username or Password is invalid</p>
+        <i (click)="userNotFound = false" class="fas fa-times"></i>
+    </div>
+    <form id="login-form" class="border" [formGroup]="LoginForm" (ngSubmit)="login()">
+        <label>
+            Username:
+        </label>
+        <input #username type="text" autocomplete="username" formControlName="Username">
+
+        <label>
+            Password:
+        </label>
+        <input type="password" autocomplete="current-password" formControlName="Password">
+
+        <button class="btn submit-button" type="submit" [disabled]="!LoginForm.valid">
+            Login
+        </button>
+    </form>
 </div>

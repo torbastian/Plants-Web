@@ -1,0 +1,21 @@
+<div class="load-in admin-panel">
+    <h1>Edible Panel</h1>
+    <p>This is where the admin adds and alters Edible options</p>
+    <div class="admin-panel-list" [@listAnimation]="Edibles.length">
+            <div class="admin-list-item border"
+            *ngFor="let Edible of Edibles">
+            <div *ngIf="expandId != Edible.id" class="admin-list-item-content">
+                <h1 class="id">{{Edible.id}}</h1>
+                <h1 class="info">{{Edible.info}}</h1>
+                <button class="alter btn secondary submit-button" (click)="setExpand(Edible.id)"><i class="fas fa-cog"></i></button>
+            </div>
+            <form *ngIf="expandId == Edible.id" class="admin-list-item-content"
+            [formGroup]="EdibleFormChange" (ngSubmit)="updateEdible()">
+            <button class="exit btn" (click)="setExpand(0)"><i class="fas fa-times"></i></button>
+            <input #edit type="text" formControlName="EdibleName" [placeholder]="Edible.info">
+            <button class="btn submit-button" Edible="submit" [disabled]="!EdibleFormChange.valid"><i class="fas fa-check"></i></button>
+        </form>
+    </div>
+    <button class="add load-up btn submit-button" (click)="addTempEdible()"><i class="fas fa-plus"></i></button>
+    </div>
+</div>

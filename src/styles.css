@@ -1,29 +1,47 @@
 /* You can add global styles to this file, and also import other style files */
+
 :root {
     --main-text-color: #000000;
     --main-text-lighter: #5c5c5c;
-
-    --main-bg-color:#FFF;
-    --main-bg-darker: #d6d6d6;
-    --strong-accent: #5CDB95;
-
+    --main-bg-color: #FFF;
+    --main-bg-darker: #cfcfcf;
+    --strong-accent: #108647;
     --submit: #06f;
-    --submit-hover:#0358d8; 
-
-    --input-shade-1: #f9f9f9;
-    --input-shade-2: #cecdcd;
-
+    --submit-hover: #0358d8;
+    --submit-active: #3887ff;
+    --negative: #fc1d2f;
+    --negative-hover: #ce1827;
+    --negative-active: #f73545;
     --shadow: #555555;
 }
 
 * {
-    margin:0;
+    margin: 0;
     padding: 0;
     font-family: 'Rubik', sans-serif;
 }
 
 *:focus {
-    outline:none;
+    outline: none;
+}
+
+.dark-theme {
+    --main-text-color: #e2e2e2;
+    --main-text-lighter: #a8a8a8;
+    --main-bg-color: #141414;
+    --main-bg-darker: #4b4b4b;
+    --strong-accent: #34AF6E;
+    --submit: #0053cf;
+    --submit-hover: #003688;
+    --submit-active: #246fe0;
+    --negative: #fc1d2f;
+    --negative-hover: #ce1827;
+    --negative-active: #f73545;
+    --shadow: #000000;
+}
+
+p {
+    font-family: 'Roboto', sans-serif;
 }
 
 a {
@@ -38,9 +56,6 @@ a:hover {
 
 body {
     color: var(--main-text-color);
-}
-
-html {
     background: var(--main-bg-color);
 }
 
@@ -52,9 +67,83 @@ html {
     overflow: hidden;
 }
 
+.admin-panel {
+    width: 80vw;
+    max-width: 450px;
+    margin: auto;
+}
+
+.admin-panel-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--main-bg-darker);
+}
+
+.admin-list-item {
+    margin-bottom: 10px;
+    background-color: var(--main-bg-color);
+}
+
+.admin-list-item-content {
+    display: grid;
+    grid-template-columns: 50px 3fr 1fr;
+    align-items: center;
+    justify-items: center;
+}
+
+.admin-list-item .fas {
+    justify-self: center;
+    font-size: 24px;
+}
+
+.admin-list-item .alter:hover, .admin-list-item .exit:hover {
+    color: var(--main-text-lighter);
+}
+
+.admin-list-item .btn {
+    margin: 0;
+    padding: 10px;
+}
+
+.admin-list-item .add {
+    box-sizing: border-box;
+    height: 60px;
+}
+
+.admin-list-item .btn.submit-button {
+    width: 100%;
+    height: 100%;
+    border-radius: 0 6px 6px 0;
+    padding: 20px
+}
+
+.admin-list-item .expand.border {
+    border: none;
+    border-left: 1px solid var(--main-bg-darker);
+    border-top: 1px solid var(--main-bg-darker);
+    border-bottom: 1px solid var(--main-bg-darker);
+}
+
+.admin-list-item input {
+    font-size: 32px;
+    width: 200px;
+    border: none;
+    text-align: center;
+    font-weight: 700;
+}
+
+.alter.btn.secondary.submit-button {
+    border: none;
+    border-left: 1px solid var(--main-bg-darker);
+}
+
 .btn {
     background: 0 0;
-    border-radius: 6px;
+    border-radius: 4px;
+    color: var(--main-text-color);
     outline: none;
     border: none;
     white-space: nowrap;
@@ -64,12 +153,13 @@ html {
     margin-bottom: 10px;
     font-size: 18px;
     cursor: pointer;
-    transition: 0.1s all ease-in-out;
+    transition: 0.2s all ease-in-out;
 }
 
 .border {
     border: 1px solid var(--main-bg-darker);
-    border-radius: 6px;
+    border-radius: 4px;
+    transition: border 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
 .border:hover {
@@ -77,24 +167,58 @@ html {
 }
 
 .btn.border:hover {
-    border: 1px solid var(--main-text-lighter);
-    box-shadow: var(--shadow) 0 1px 3px 1px;
+    border: 1px solid var(--main-bg-darker);
+    box-shadow: var(--shadow) 0px 2px 7px 0px;
 }
 
 .btn.border:active {
-    border: 1px solid var(--main-text-lighter);
-    box-shadow: inset var(--shadow) 0 2px 4px 2px;
+    border: 1px solid var(--main-bg-darker);
+    box-shadow: inset var(--shadow) 1px 2px 4px 0px;
 }
-
 
 .submit-button {
     background-color: var(--submit);
     color: white;
-    border: none;
+    border: 1px solid transparent;
 }
 
 .submit-button:hover:enabled {
     background-color: var(--submit-hover);
+}
+
+.secondary.submit-button {
+    background-color: var(--main-bg-color);
+    color: var(--main-text-color);
+    border: 1px solid var(--main-bg-darker);
+}
+
+.secondary.submit-button:hover {
+    border: 1px solid var(--main-text-color);
+    background-color: var(--main-bg-color);
+}
+
+.submit-button:active:enabled {
+    background-color: var(--submit-active);
+}
+
+.secondary.submit-button:active:enabled {
+    background-color: var(--main-bg-darker);
+}
+
+.negative.submit-button {
+    background-color: var(--negative);
+    color: var(--main-bg-color);
+    min-width: 50px;
+}
+
+.negative.submit-button:active:enabled {
+    background-color: var(--negative-active);
+    color: var(--main-bg-color);
+}
+
+.negative.submit-button:hover {
+    background-color: var(--negative-hover);
+    color: var(--main-bg-color);
 }
 
 .btn:disabled {
@@ -102,23 +226,32 @@ html {
     cursor: default;
 }
 
-.tooltip:hover::before {
+.tooltip:hover::before, .tooltip-left:hover::before {
     content: attr(data-text);
     position: absolute;
-
-    margin-top: 25px;
-    margin-left: 20px;
-
+    display: inline-block;
+    box-sizing: border-box;
+    width: max-content;
     text-align: center;
     pointer-events: none;
-
+    font-family: 'Rubik', sans-serif;
+    font-weight: 500;
     background: var(--main-bg-darker);
     color: var(--main-text-lighter);
-
     font-size: 14px;
     border-radius: 0 6px 6px 6px;
     padding: 5px;
+    transform: translateY(25px);
     animation: tooltip-fade 1s ease-in-out;
+}
+
+.tooltip-left:hover::before {
+    transform: translateY(25px) translateX(-100%);
+    border-radius: 6px 0 6px 6px;
+}
+
+.pointer-child>*:hover {
+    cursor: pointer;
 }
 
 .load-in {
@@ -129,15 +262,29 @@ html {
     animation: fade-in 0.2s ease-in-out;
 }
 
+.load-up {
+    animation: load-up 0.5s ease-in-out;
+}
+
 @keyframes load-in {
     0% {
         opacity: 0;
         transform: translateX(10px);
     }
-    
     100% {
         opacity: 100%;
         transform: translateX(0);
+    }
+}
+
+@keyframes load-up {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    100% {
+        opacity: 100%;
+        transform: translateY(0);
     }
 }
 
@@ -145,7 +292,6 @@ html {
     0% {
         opacity: 0;
     }
-    
     100% {
         opacity: 100%;
     }
@@ -155,7 +301,6 @@ html {
     0%, 50% {
         opacity: 0;
     }
-
     60% {
         opacity: 100%;
     }

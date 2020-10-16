@@ -17,7 +17,7 @@ export class AccountService {
   constructor(
     private router: Router,
     private http: HttpClient
-  ) { 
+  ) {
     this.UserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('user')));
     this.user = this.UserSubject.asObservable();
   }
@@ -27,12 +27,16 @@ export class AccountService {
   }
 
   login(username, password) {
-    return this.http.post<User>(`${environment.apiUrl}/users/authenticate`, {username, password})
-    .pipe(map(user => {
-      localStorage.setItem('user', JSON.stringify(user));
-      this.UserSubject.next(user);
-      return user;
-    }));
+    let userDetails = new User();
+    userDetails.username = username;
+    userDetails.password = password;
+
+    return this.http.post<User>(`${environment.apiUrl}/users/auth`, userDetails)
+      .pipe(map(user => {
+        localStorage.setItem('user', JSON.stringify(user));
+        this.UserSubject.next(user);
+        return user;
+      }));
   }
 
   logout() {
@@ -55,27 +59,27 @@ export class AccountService {
 
   update(id, params) {
     return this.http.put(`${environment.apiUrl}/users/${id}`, params)
-    .pipe(map(x => {
-      //Update stored user, if the current user updated their own information
-      if (id == this.userValue.id) {
-      
-        //Update local storage
-        const user = { ...this.userValue, ...params };  
-        localStorage.setItem('user', JSON.stringify(user));
-        
-        //Publish updated user to subscribers
-        this.UserSubject.next(user);
-      }
-    }))
+      .pipe(map(x => {
+        //Update stored user, if the current user updated their own information
+        if (id == this.userValue.id) {
+
+          //Update local storage
+          const user = { ...this.userValue, ...params };
+          localStorage.setItem('user', JSON.stringify(user));
+
+          //Publish updated user to subscribers
+          this.UserSubject.next(user);
+        }
+      }))
   }
 
   delete(id: number) {
     return this.http.delete(`${environment.apiUrl}/users/${id}`)
-    .pipe(map(x => {
-      if (id == this.userValue.id) {
-        this.logout();
-      }
-      return x;
-    }));
+      .pipe(map(x => {
+        if (id == this.userValue.id) {
+          this.logout();
+        }
+        return x;
+      }));
   }
 }

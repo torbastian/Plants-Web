@@ -9,7 +9,7 @@ import { ClimateObj } from '../../models/climate-model';
 })
 
 export class ClimateComponent implements OnInit {
-
+  //As far as i know this is unused, but initially used as a test of the API connection
   constructor(private ClimateService: ClimateService) { }
 
   objects: ClimateObj[];

@@ -1,36 +1,40 @@
-<div id="PlantCreate" class="load-in">
-    <form [formGroup]="PlantForm" (ngSubmit) = "post()">
+<div id="plant-create" class="load-in">
+    <div class="intro">
+        <h1>Create a Plant</h1>
+        <p>This is where you can create a plant</p>
+    </div>
+    <form class="form-group" [formGroup]="PlantForm" (ngSubmit)="post()">
         <!-- ID Should be automatic -->
-        <label>Navn</label>
+        <label>Name</label>
         <input formControlName="Navn" type="text">
 
         <label>Type</label>
         <select formControlName="Type">
-            <option *ngFor="let type of PlantTypeArray" [ngValue] = "type">
+            <option *ngFor="let type of PlantTypeArray" [ngValue]="type">
                 {{type.info}}
             </option>
         </select>
 
         <label>Climate</label>
         <select formControlName="Climate">
-            <option *ngFor="let type of ClimateArray" [ngValue] = "type">
+            <option *ngFor="let type of ClimateArray" [ngValue]="type">
                 {{type.info}}
             </option>
         </select>
 
         <label>Edible</label>
         <select formControlName="Edible">
-            <option *ngFor="let type of EdibleArray" [ngValue] = "type">
+            <option *ngFor="let type of EdibleArray" [ngValue]="type">
                 {{type.info}}
             </option>
         </select>
 
         <!-- Username Should come from login -->
         <!-- Approved decided by Admin -->
-        <label>Image</label>
-        <input id="article-file" class="input-file" type="file" formControlName="Image" (change)="onFileChanged($event)">
+        <img id="source-image" [src]="url" alt=" ">
+        <input id="article-file" class="input-file" type="file" formControlName="Image"
+            (change)="onFileChanged($event)">
         <label class="btn border" for="article-file">Upload Image</label>
-        <button type="submit"[disabled]="!PlantForm.valid">Submit</button>
+        <button type="submit" class="btn submit-button" [disabled]="!PlantForm.valid">Submit</button>
     </form>
-    <button (click) = "debug()">Debug</button>
 </div>

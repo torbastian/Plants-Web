@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
-import { PlantImageService, ImagePlant } from "../../services/plant.service";
 import { AccountService } from "../../services/account.service";
 import { ClimateObj } from "../../models/climate-model";
 import { ClimateService } from "../../services/climate.service";
@@ -8,7 +7,6 @@ import { EdibleObj } from "../../models/edible-model";
 import { EdibleService } from "../../services/edible.service";
 import { PlantTypeObj } from "../../models/plant-type-model";
 import { PlantTypesService } from "../../services/plant-types.service";
-import { PlantObj } from 'src/app/models/plant-model';
 import {PlantService} from "../../services/plant.service";
 
 @Component({
@@ -26,7 +24,6 @@ export class PlantCreateComponent implements OnInit {
   });
   constructor(
     private PlantService: PlantService,
-    private plantImageService: PlantImageService,
     private AccountService: AccountService,
     private edibleService: EdibleService,
     private climateService: ClimateService,
@@ -113,8 +110,4 @@ export class PlantCreateComponent implements OnInit {
       data => {
       }, err => console.error(err))
   }
-  debug(){
-    console.log(this.PlantForm.value);
-  }
-
 }

@@ -10,5 +10,5 @@ export class PlantObj implements Model {
     approved: string;
     image: string;
 
-    constructor() {}
+    constructor( ) {}
 }

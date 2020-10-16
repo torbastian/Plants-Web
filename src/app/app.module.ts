@@ -17,6 +17,8 @@ import { ArticleCreatorComponent } from './components/article-creator/article-cr
 import { PlantComponent } from './components/plant/plant.component';
 import { AccountComponent } from './components/account/account.component';
 import { LoginComponent } from './components/account/login/login.component';
+import { PlantCreateComponent } from './Components/plant-create/plant-create.component';
+
 
 
 @NgModule({
@@ -32,7 +34,9 @@ import { LoginComponent } from './components/account/login/login.component';
     ArticleCreatorComponent,
     PlantComponent,
     AccountComponent,
-    LoginComponent
+    LoginComponent,
+    PlantCreateComponent,
+ 
   ],
   imports: [
     BrowserModule,

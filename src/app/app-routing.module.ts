@@ -27,7 +27,7 @@ const routes: Routes = [
   {path:'Account', component: AccountComponent, canActivate: [AuthGuard]},
   {path: 'Account/Login', component: LoginComponent},
   {path: '', redirectTo: '/Home', pathMatch: 'full'},
-  {path:'Plant-create', component: PlantCreateComponent},
+  {path:'PlantCreate', component: PlantCreateComponent},
   {path: 'Article/:id', component: ArticleComponent},
   {path: 'Admin', component: AdminPanelComponent, canActivate: [AuthGuard], children: [
     {path: '', redirectTo: 'approval', pathMatch: 'full'},

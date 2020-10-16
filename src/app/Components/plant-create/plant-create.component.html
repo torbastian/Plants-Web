@@ -1,11 +1,36 @@
-<p>plant-create works!</p>
-<div class="form-group load-in">
-    <!-- ID Should be automatic -->
-    <h1>Info</h1>
-    <h1>Type</h1>
-    <h1>Climate</h1>
-    <h1>Edible</h1>
-    <!-- Username Should come from login -->
-    <!-- Approved decided by Admin -->
-    <h1>Image</h1>
+<div id="PlantCreate" class="load-in">
+    <form [formGroup]="PlantForm" (ngSubmit) = "post()">
+        <!-- ID Should be automatic -->
+        <label>Navn</label>
+        <input formControlName="Navn" type="text">
+
+        <label>Type</label>
+        <select formControlName="Type">
+            <option *ngFor="let type of PlantTypeArray" [ngValue] = "type">
+                {{type.info}}
+            </option>
+        </select>
+
+        <label>Climate</label>
+        <select formControlName="Climate">
+            <option *ngFor="let type of ClimateArray" [ngValue] = "type">
+                {{type.info}}
+            </option>
+        </select>
+
+        <label>Edible</label>
+        <select formControlName="Edible">
+            <option *ngFor="let type of EdibleArray" [ngValue] = "type">
+                {{type.info}}
+            </option>
+        </select>
+
+        <!-- Username Should come from login -->
+        <!-- Approved decided by Admin -->
+        <label>Image</label>
+        <input id="article-file" class="input-file" type="file" formControlName="Image" (change)="onFileChanged($event)">
+        <label class="btn border" for="article-file">Upload Image</label>
+        <button type="submit"[disabled]="!PlantForm.valid">Submit</button>
+    </form>
+    <button (click) = "debug()">Debug</button>
 </div>

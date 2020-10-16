@@ -44,7 +44,6 @@ import { EdiblePanelComponent } from './components/admin-panel/edible-panel/edib
     AccountComponent,
     LoginComponent,
     PlantCreateComponent,
- 
     ArticleComponent,
     CommentsComponent,
     PageNotFoundComponent,

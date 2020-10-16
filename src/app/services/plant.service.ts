@@ -38,6 +38,10 @@ export class PlantService extends CrudService<PlantObj, number> {
    setApproveType(id: number, approvalType: number) {
      return this._http.put(this._base + '/approval/' + id + '/' + approvalType, null);
    }
+
+   create(plant: any): Observable<any>{
+    return this._http.post(this._base, plant);
+   }
 }
 
 @Injectable({

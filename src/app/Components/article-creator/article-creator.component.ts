@@ -1,12 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
-import { PlantImageService, ImagePlant } from "../../services/plant.service";//Not needed??
 import { AccountService } from "../../services/account.service";
-import { PlantObj } from '../../models/plant-model';
-import {PlantService} from "../../services/plant.service";
-import {ActivatedRoute, Router} from "@angular/router";
-import {User} from "../../models/user-model";
-import {ArticleService} from "../../services/article.service";
+import { PlantService } from "../../services/plant.service";
+import { ActivatedRoute, Router } from "@angular/router";
+import { User } from "../../models/user-model";
+import { ArticleService } from "../../services/article.service";
 
 @Component({
   selector: 'app-article-creator',
@@ -21,7 +19,6 @@ export class ArticleCreatorComponent implements OnInit {
   });
 
   constructor(
-    private plantImageService: PlantImageService,//Not needed??
     private PlantService: PlantService,
     private AccountService: AccountService,
     private route: ActivatedRoute,
@@ -31,47 +28,42 @@ export class ArticleCreatorComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      this.PlantID = <number>params["id"];
+      let _param = <number>params["id"];
+      this.PlantID = Number(_param);
     });
     this.checkUser();
-
   }
-//VARIABLES
-PlantID: number = 0;
-UserID: number = 0;
-checkUser(){
-  this.UserID = this.AccountService.userValue.id;
-  let _User: User = null;
-  this.PlantService.getOwner(this.PlantID).subscribe(user => {
-    _User = <User> user;
-    if( this.UserID != _User.id){
-      this.Router.navigate(["/Home"]);
-    }
-  })
-}
+
+  //VARIABLES
+  PlantID: number = 0;
+  UserID: number = 0;
+
+  checkUser() {
+    this.UserID = this.AccountService.userValue.id;
+    let _User: User = null;
+    this.PlantService.getOwner(this.PlantID).subscribe(user => {
+      _User = <User>user;
+      if (this.UserID != _User.id) {
+        this.Router.navigate(["/Home"]);
+      }
+    })
+  }
 
   post() {
     let _Values = this.ArticleForm.value;
     let _article: any = {
-     
       Text: _Values.Text,
       Tips: _Values.Tips,
-      PlantsID: <Number> this.PlantID
+      PlantsID: this.PlantID
     };
 
-    let _ArticleID: number = 0;
-    console.log(_article);
-    
     this.ArticleService.create(_article).subscribe(
       data => {
-        _ArticleID = data.ArticleID;
-      }, err => console.error(err)),
-      ()=> {
-        if(_ArticleID != 0)
-        this.Router.navigate(["/" + _ArticleID])
-        else{
-          this.Router.navigate(["/Home"]);
-        }
-      };
+        this.navigateUser(data.articleID);
+      }, err => console.error(err))
+  }
+
+  navigateUser(articleID: number) {
+    this.Router.navigate(["Article/" + articleID]);
   }
 }

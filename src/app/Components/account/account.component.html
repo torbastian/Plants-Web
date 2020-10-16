@@ -12,10 +12,12 @@
             <button class="btn secondary submit-button add"><i class="fas fa-plus"></i></button>
             <div class="mini-plant border" *ngFor="let plant of plants">
                 <app-plant [plant]="plant"></app-plant>
-            <p class="a-type" [ngClass]="{'Approved' : plant.approved == 'Approved',
-                              'Pending' : plant.approved == 'Pending',
-                              'Denied' : plant.approved == 'Denied'}">{{plant.approved}}</p>
-                              <button (click)="goToArticleCreate(plant.id)">M</button>
+                <div class="extra">
+                    <p class="a-type" [ngClass]="{'Approved' : plant.approved == 'Approved',
+                                      'Pending' : plant.approved == 'Pending',
+                                      'Denied' : plant.approved == 'Denied'}">{{plant.approved}}</p>
+                                      <button class="btn submit-button" (click)="goToArticleCreate(plant.id)"><i class="far fa-file-alt"></i></button>
+                </div>
             </div>
         </section>
     </div>

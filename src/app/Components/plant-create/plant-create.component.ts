@@ -7,7 +7,7 @@ import { EdibleObj } from "../../models/edible-model";
 import { EdibleService } from "../../services/edible.service";
 import { PlantTypeObj } from "../../models/plant-type-model";
 import { PlantTypesService } from "../../services/plant-types.service";
-import {PlantService} from "../../services/plant.service";
+import { PlantService } from "../../services/plant.service";
 
 @Component({
   selector: 'app-plant-create',
@@ -50,7 +50,7 @@ export class PlantCreateComponent implements OnInit {
       data => {
         this.EdibleArray = <EdibleObj[]>data;
       }, err => console.error(err),
-      ()=> this.PlantForm.value.Edible = this.EdibleArray[0]
+      () => this.PlantForm.value.Edible = this.EdibleArray[0]
     );
   }
 
@@ -59,7 +59,7 @@ export class PlantCreateComponent implements OnInit {
       data => {
         this.ClimateArray = <ClimateObj[]>data;
       }, err => console.error(err),
-      ()=> this.PlantForm.value.Climate = this.ClimateArray[0]
+      () => this.PlantForm.value.Climate = this.ClimateArray[0]
     );
   }
 
@@ -68,7 +68,7 @@ export class PlantCreateComponent implements OnInit {
       data => {
         this.PlantTypeArray = <PlantTypeObj[]>data;
       }, err => console.error(err),
-      ()=> this.PlantForm.value.Type = this.PlantTypeArray[0]
+      () => this.PlantForm.value.Type = this.PlantTypeArray[0]
     );
   }
   //When the file is changed on the site
@@ -92,11 +92,13 @@ export class PlantCreateComponent implements OnInit {
       }
     }
   }
-  post(){
-    if(this.UserID == 0){
+  post() {
+    if (this.UserID == 0) {
       return;
     }
+
     let _Values = this.PlantForm.value;
+
     let _plant: any = {
       FK_PlantTypeID: _Values.Type.id,
       PlantName: _Values.Navn,
@@ -106,6 +108,7 @@ export class PlantCreateComponent implements OnInit {
       //FK_ApprovedTypeID:
       Image: this.base64image
     };
+    
     this.PlantService.create(_plant).subscribe(
       data => {
       }, err => console.error(err))

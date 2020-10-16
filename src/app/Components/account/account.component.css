@@ -56,10 +56,11 @@ section h2 {
 
 p.a-type {
     margin: 10px;
-    padding: 10px;
+    padding: 20px;
     border-radius: 4px;
     font-family: 'Rubik', sans-serif;
     color: var(--main-bg-color);
+    flex-grow: 2;
 }
 
 p.Approved {
@@ -72,4 +73,17 @@ p.Pending {
 
 p.Denied {
     background-color: var(--negative);
+}
+
+.extra {
+    display: flex;
+    flex-direction: row;
+    height: 70px;
+}
+
+.extra .btn.submit-button {
+    margin: 10px;
+    width: 50px;
+    height: 50px;
+    box-sizing: border-box;
 }

@@ -20,7 +20,7 @@ export class PlantCreateComponent implements OnInit {
   PlantForm = new FormGroup({
     Navn: new FormControl("", Validators.required),
     Image: new FormControl("", Validators.required),
-    Type: new FormControl(0, Validators.required),
+    Type: new FormControl("", Validators.required),
     Climate: new FormControl("", Validators.required),
     Edible: new FormControl("", Validators.required)
   });

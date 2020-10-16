@@ -20,4 +20,8 @@ export class ArticleService extends CrudService<ArticleObj, number> {
    getByPlantID(id: number): Observable<ArticleObj> {
     return this._http.get<ArticleObj>(this._base + '/plant/' + id);
   }
+
+  create(article: any): Observable<any>{
+    return this._http.post(this._base, article);
+   }
 }

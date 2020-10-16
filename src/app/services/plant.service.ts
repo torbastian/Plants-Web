@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { CrudService } from './crud-service.service';
 import { HttpClient } from '@angular/common/http';
-import { PlantObj } from '../models/plant-model'
-
+import { PlantObj } from '../models/plant-model';
+import {User} from "../models/user-model";
 import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs';
 
@@ -41,6 +41,9 @@ export class PlantService extends CrudService<PlantObj, number> {
 
    create(plant: any): Observable<any>{
     return this._http.post(this._base, plant);
+   }
+   getOwner(PlantID: number):Observable<User>{
+    return this._http.get<User>(this._base + "/owner/" + PlantID); 
    }
 }
 

@@ -15,7 +15,7 @@ export class CommentsComponent implements OnInit {
 
   comments: CommentObj[] = [];
   loggedIn: boolean = false;
-  user: User = null;
+  characterCount: number = 0;
 
   constructor(
     private CommentService: CommentService,
@@ -27,15 +27,21 @@ export class CommentsComponent implements OnInit {
   });
 
   ngOnInit(): void {
+    this.CommentForm.valueChanges.subscribe(
+      data => {
+        this.characterCount = this.CommentForm.value.CommentBox.length;
+      }
+    )
+
     if (this.ArticleID != undefined) {
       this.getComments();
     }
   }
 
   checkUser() {
+    //Check if the user is logged in
     if (this.accountService.userValue != null || this.accountService.userValue != undefined) {
       this.loggedIn = true;
-      this.user = this.accountService.userValue;
     }
   }
 
@@ -52,14 +58,18 @@ export class CommentsComponent implements OnInit {
   }
 
   postComment() {
-    if (this.user == null) {
+    //Check if the user is logged in or not, create a new comment obj
+    //and send it for creation on the database
+    let _user = this.accountService.userValue;
+
+    if (_user == null) {
       return;
     }
 
     let _comment = new CommentObj();
     _comment.info = this.CommentForm.value.CommentBox;
 
-    this.CommentService.postNewComment(this.user.id, this.ArticleID, _comment).subscribe(
+    this.CommentService.postNewComment(_user.id, this.ArticleID, _comment).subscribe(
       data => {
         console.log(data);
       },
@@ -67,6 +77,7 @@ export class CommentsComponent implements OnInit {
       () => this.getComments()
     );
 
+    //reset the form
     this.CommentForm.reset();
   }
 }

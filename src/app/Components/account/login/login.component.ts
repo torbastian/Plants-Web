@@ -1,7 +1,7 @@
-import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { AccountService } from '../../../services/account.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit, AfterViewInit {
+
   @ViewChild("username") usernameField: ElementRef;
   editUsername(): void {
     this.usernameField.nativeElement.focus();
@@ -20,7 +21,8 @@ export class LoginComponent implements OnInit, AfterViewInit {
   })
   constructor(
     private accountService: AccountService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
     ) { }
 
   userNotFound: boolean = false;
@@ -57,6 +59,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
   }
 
   navigateUser() {
-    this.router.navigate(['Home']);
+    let returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    this.router.navigateByUrl(returnUrl);
   }
 }

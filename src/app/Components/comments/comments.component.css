@@ -10,6 +10,22 @@
     margin: 10px 0;
 }
 
+.comment .extra {
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+}
+
+.extra .btn.submit-button {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.extra span {
+    font-family: 'Roboto', sans-serif;
+    color: var(--main-text-lighter);
+}
+
 .username {
     font-size: 19px;
 }
@@ -30,10 +46,12 @@
     width: 100%;
     border: none;
     resize: none;
+    overflow: visible;
     height: 50px;
     box-sizing: border-box;
     border-bottom: 1px solid var(--main-bg-darker);
-    transition: height 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    font-family: 'Roboto', sans-serif;
 }
 
 .comment textarea:hover {

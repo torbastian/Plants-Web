@@ -42,6 +42,10 @@
     color: var(--main-text-lighter);
 }
 
+.btn.submit-button.add {
+    width: 100%;
+}
+
 .mini-plant {
     margin-bottom: 10px;
 }

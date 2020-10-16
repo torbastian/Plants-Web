@@ -46,6 +46,5 @@
     background: var(--main-bg-darker);
     color: var(--main-text-lighter);
     padding: 10px;
-    border-radius: 8px;
+    border-radius: 4px;
 }
-

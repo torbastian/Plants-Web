@@ -9,6 +9,7 @@
         </ul>
         <section [@listAnimation]="plants.length">
             <h2>Your Plants & Articles</h2>
+            <button class="btn secondary submit-button add"><i class="fas fa-plus"></i></button>
             <div class="mini-plant border" *ngFor="let plant of plants">
                 <app-plant [plant]="plant"></app-plant>
             <p class="a-type" [ngClass]="{'Approved' : plant.approved == 'Approved',

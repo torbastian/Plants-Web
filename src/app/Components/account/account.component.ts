@@ -23,21 +23,12 @@ export class AccountComponent implements OnInit {
   plants: PlantObj[] = [];
 
   ngOnInit(): void {
-    this.getUser();
-  }
-
-  getUser() {
-    let _user = this.accountService.userValue;
-    if (_user != null || _user != undefined) {
-      this.currentUser = _user;
-      this.getPlantsBelongingToUser();
-    }
-    else {
-      this.router.navigate(['Account/Login']);
-    }
+    this.getPlantsBelongingToUser();
   }
 
   getPlantsBelongingToUser() {
+    this.currentUser = this.accountService.userValue;
+
     if (this.currentUser != null) {
       this.plantService.getByUserId(this.currentUser.id).subscribe(
         data => {

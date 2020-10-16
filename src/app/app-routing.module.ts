@@ -15,16 +15,18 @@ import { TypePanelComponent } from './components/admin-panel/type-panel/type-pan
 import { EdiblePanelComponent } from './components/admin-panel/edible-panel/edible-panel.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
+import { AuthGuard } from './helpers/auth.guard';
+
 const routes: Routes = [
   {path:'About', component: AboutComponent},
   {path:'Contact', component: ContactComponent},
   {path:'List', component: ListComponent},
   {path:'Home', component: HomeComponent},
   {path:'Article-Creator', component: ArticleCreatorComponent},
-  {path:'Account', component: AccountComponent},
+  {path:'Account', component: AccountComponent, canActivate: [AuthGuard]},
   {path: 'Account/Login', component: LoginComponent},
   {path: 'Article/:id', component: ArticleComponent},
-  {path: 'Admin', component: AdminPanelComponent, children: [
+  {path: 'Admin', component: AdminPanelComponent, canActivate: [AuthGuard], children: [
     {path: '', redirectTo: 'approval', pathMatch: 'full'},
     {path: 'approval', component: ApprovalComponent},
     {path: 'climates', component: ClimatePanelComponent},

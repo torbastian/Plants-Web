@@ -15,6 +15,7 @@
             <p class="a-type" [ngClass]="{'Approved' : plant.approved == 'Approved',
                               'Pending' : plant.approved == 'Pending',
                               'Denied' : plant.approved == 'Denied'}">{{plant.approved}}</p>
+                              <button (click)="goToArticleCreate(plant.id)">M</button>
             </div>
         </section>
     </div>

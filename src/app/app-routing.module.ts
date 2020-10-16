@@ -23,7 +23,7 @@ const routes: Routes = [
   {path:'Contact', component: ContactComponent},
   {path:'List', component: ListComponent},
   {path:'Home', component: HomeComponent},
-  {path:'Article-Creator', component: ArticleCreatorComponent},
+  {path:'Article-Creator/:id', component: ArticleCreatorComponent},
   {path:'Account', component: AccountComponent, canActivate: [AuthGuard]},
   {path: 'Account/Login', component: LoginComponent},
   {path: '', redirectTo: '/Home', pathMatch: 'full'},

@@ -39,6 +39,10 @@ export class AccountComponent implements OnInit {
     }
   }
 
+  goToArticleCreate(plantid: number){
+    this.router.navigate(["Article-Creator/"+ plantid]);
+  }
+
   logout() {
     this.accountService.logout();
     this.router.navigate(['Account/Login']);

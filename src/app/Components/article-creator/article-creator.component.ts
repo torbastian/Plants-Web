@@ -30,7 +30,9 @@ export class ArticleCreatorComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.route.params.subscribe(params => {this.PlantID = <number> params["id"]});
+    this.route.params.subscribe(params => {
+      this.PlantID = <number>params["id"];
+    });
     this.checkUser();
 
   }
@@ -47,14 +49,19 @@ checkUser(){
     }
   })
 }
+
   post() {
     let _Values = this.ArticleForm.value;
     let _article: any = {
-      FK_PlantID: this.PlantID,
+     
       Text: _Values.Text,
-      Tips: _Values.Tips
+      Tips: _Values.Tips,
+      PlantsID: <Number> this.PlantID
     };
+
     let _ArticleID: number = 0;
+    console.log(_article);
+    
     this.ArticleService.create(_article).subscribe(
       data => {
         _ArticleID = data.ArticleID;
